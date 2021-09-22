@@ -1,0 +1,208 @@
+/********** 網站導覽 section **********/
+.tour-section {
+  @import '../common/style.scss';
+
+  background-image: url($domain + '/images/home/home-tour-bg.png');
+  background-position: center 100%;
+
+  @media screen and (max-width: 768px) {
+    & {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+  }
+
+  .title {
+    color: $secondary-green-dark;
+    font-family: $zh-tw-maru;
+    text-align: center;
+  }
+
+  /* 網站導覽功能列 */
+  .features-container {
+    background-color: #fff;
+  }
+  .features-container ul {
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+    padding: 0;
+  }
+  @media screen and (max-width: 768px) {
+    & .features-container ul {
+      margin: 0;
+      flex-direction: column;
+      position: absolute;
+      top: 50%;
+      left: 5px;
+      transform: translate(0, -50%);
+    }
+  }
+  .features-container li {
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    transition: 0.3s;
+    opacity: 0.3;
+  }
+  @media screen and (max-width: 768px) {
+    & .features-container li {
+      height: calc(100vh / 7);
+      justify-content: center;
+    }
+  }
+  .features-container li[class='action'] {
+    opacity: 1;
+  }
+  .features-container li:not([class='action']) {
+    cursor: pointer;
+
+    &:hover {
+      opacity: unset;
+    }
+  }
+
+  .features-container i {
+    font-size: 60px;
+    color: $primary-lightgreen;
+  }
+  @media screen and (max-width: 768px) {
+    & .features-container i {
+      font-size: 30px;
+    }
+  }
+  .features-container h3 {
+    font-family: $zh-tw-noto;
+    color: $primary-lightbrown;
+  }
+  @media screen and (max-width: 768px) {
+    &.features-container h3 {
+      font-size: 1rem;
+    }
+  }
+  /* 介紹(影片、圖片、說明文字) */
+  .introduction-container {
+    height: 400px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  @media screen and (max-width: 768px) {
+    & .introduction-container {
+      height: unset;
+      flex-grow: 0.5;
+      flex-direction: column;
+      justify-content: space-around;
+      transform: translateX(30px);
+    }
+  }
+  .screen-container {
+    width: 550px;
+    height: 350px;
+    background: linear-gradient(135deg, #fded82 10%, #fee0dc 90%);
+    box-shadow: 3px 3px 5px #333;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  @media screen and (max-width: 1200px) {
+    & .screen-container {
+      width: 45.83vw;
+      height: 29.16vw;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    & .screen-container {
+      width: 210px;
+      height: 170px;
+    }
+  }
+  .screen-container > iframe,
+  .screen-container > img,
+  .screen-container > video {
+    width: 530px;
+    height: 315px;
+    border-radius: 20px;
+    object-fit: cover;
+  }
+  @media screen and (max-width: 1200px) {
+    & .screen-container > iframe,
+    & .screen-container > img,
+    & .screen-container > video {
+      width: 44.16vw;
+      height: 26.25vw;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    & .screen-container > iframe,
+    & .screen-container > img,
+    & .screen-container > video {
+      width: 190px;
+      height: 120px;
+    }
+  }
+  .explanation-container {
+    width: 550px;
+    height: 350px;
+  }
+  @media screen and (max-width: 1200px) {
+    & .explanation-container {
+      width: 45.83vw;
+      height: 29.16vw;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    & .explanation-container {
+      height: 100%;
+    }
+  }
+  .feature-link {
+    width: 380px;
+    height: 60px;
+    line-height: 60px;
+    color: $secondary-green-dark;
+    background-color: #efefef;
+    font-size: 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  @media screen and (max-width: 1000px) {
+    & .feature-link {
+      width: 38vw;
+      height: 6vw;
+      line-height: 6vw;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    & .feature-link {
+      height: 40px;
+      line-height: 40px;
+    }
+  }
+  .explanation-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .explanation {
+    color: $accent-red;
+    font-family: $zh-tw-noto;
+    font-size: 1.4rem;
+    text-align: center;
+  }
+  .sub-explanation {
+    line-height: 60px;
+    margin: 0;
+    color: $primary-lightbrown;
+    font-family: $zh-tw-noto;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+}
