@@ -1,0 +1,1625 @@
+@import '../common/style.scss';
+
+.home {
+  /*********** 共同部分 **********/
+  figure > img {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* section 標題 */
+  section > .title,
+  section > .title-row > .title,
+  section > .title-row > .title-container > .title {
+    color: $secondary-green-dark;
+    font-family: $zh-tw-maru;
+    padding: 30px 0;
+    text-align: center;
+  }
+
+  .hero-section,
+  .tour-section {
+    width: 100%;
+    /* height: 937px; */
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .singers-section,
+  .comment-section,
+  .vote-section,
+  .vote-section-md,
+  .game-section,
+  .reservation-section,
+  .reservation-section-md,
+  .delivery-section {
+    width: 100%;
+    height: 100vh;
+    margin-top: 70px;
+  }
+  @media screen and (max-width: 768px) {
+    .singers-section,
+    .comment-section,
+    .vote-section,
+    .vote-section-md,
+    .game-section,
+    .reservation-section,
+    .reservation-section-md,
+    .delivery-section {
+      margin-top: 0;
+    }
+  }
+
+  /* 精靈、title、sub-title */
+  .vote-section .title-row,
+  .reservation-section .title-row {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .vote-section .title-row .title-container,
+  .reservation-section .title-row .title-container {
+    display: flex;
+    transform: translateX(-40px);
+  }
+  .vote-section .title-container .elfin-container,
+  .reservation-section .title-container .elfin-container {
+    width: 80px;
+    height: fit-content;
+    transform: translateX(-40px);
+  }
+  .vote-section .title-row .sub-title,
+  .reservation-section .title-row .sub-title {
+    margin-top: 30px;
+    color: $primary-lightbrown;
+    font-family: $zh-tw-noto;
+    text-align: center;
+  }
+
+  .d-none {
+    display: none !important;
+  }
+
+  .action {
+    opacity: unset !important;
+  }
+
+  .width-limit {
+    padding: 0 30px;
+  }
+
+  /*********** 動畫 **********/
+  /* 評論列表之左箭頭 */
+  @keyframes arrow-left-animation {
+    0% {
+      transform: translateX(0px);
+    }
+    100% {
+      transform: translateX(-30px);
+    }
+  }
+  /* 評論列表之右箭頭 */
+  @keyframes arrow-right-animation {
+    0% {
+      transform: translateX(0px);
+    }
+    100% {
+      transform: translateX(30px);
+    }
+  }
+  /* 音樂遊戲之 points */
+  @keyframes point1-animation {
+    0%,
+    33% {
+      opacity: 1;
+    }
+    34%,
+    100% {
+      opacity: 0.3;
+    }
+  }
+  @keyframes point2-animation {
+    0%,
+    33% {
+      opacity: 0.3;
+    }
+    34%,
+    66% {
+      opacity: 1;
+    }
+    67%,
+    100% {
+      opacity: 0.3;
+    }
+  }
+  @keyframes point3-animation {
+    0%,
+    66% {
+      opacity: 0.3;
+    }
+    67%,
+    100% {
+      opacity: 1;
+    }
+  }
+  /* 線上訂位之波浪 */
+  @keyframes seat-graph-animation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  /*********** hero section **********/
+  .hero-section {
+    background-image: url($domain + '/images/home/home-hero-bg.jpg');
+    background-position: center;
+    position: relative;
+  }
+  .hero-section::before {
+    content: '';
+    width: 100%;
+    /* height: 937px; */
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.2);
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  /* 近期歌手看板 */
+  .hero-section .singer-board-container {
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+    left: 15vw;
+    top: 10.4vw;
+    display: flex;
+    flex-direction: column;
+  }
+  @media screen and (max-width: 768px) {
+    .hero-section .singer-board-container {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  .hero-section .singer-board-container .title {
+    margin: 0 auto 10px auto;
+    color: $secondary-green-dark;
+    font-family: $zh-tw-maru;
+  }
+  @media screen and (max-width: 768px) {
+    .hero-section .singer-board-container .title {
+      display: none;
+    }
+  }
+  .hero-section .board-container {
+    width: 420px;
+    height: 275px;
+    background-color: #fff;
+    border: 10px solid $primary-lightgreen;
+    border-radius: 8%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  @media screen and (max-width: 768px) {
+    .hero-section .board-container {
+      width: 300px;
+      height: 300px;
+      padding: 5px 30px;
+      border: unset;
+      box-sizing: border-box;
+      flex-direction: column;
+      box-shadow: 0 3px 6px rgba(50, 50, 50, 0.5);
+    }
+  }
+  /* 手機板 title */
+  .hero-section .board-container .title-container-md {
+    display: none;
+  }
+  @media screen and (max-width: 768px) {
+    .hero-section .board-container .title-container-md {
+      display: block;
+      text-align: center;
+    }
+    .hero-section .board-container .title-container-md h1 {
+      /* line-height: 2.6vw; */
+      color: $primary-lightbrown;
+      font-family: $zh-tw-maru;
+    }
+    .hero-section .board-container .title-container-md img {
+      margin: 0 10px;
+      width: 80px;
+    }
+    .hero-section .board-container .title-container-md span {
+      font-family: $zh-tw-maru;
+      font-size: 1.67rem;
+      color: $accent-red;
+    }
+  }
+  .hero-section .board-container .content-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .hero-section .singer-avatar-container {
+    width: 160px;
+    height: 160px;
+  }
+  @media screen and (max-width: 768px) {
+    .hero-section .singer-avatar-container {
+      width: 100px;
+      height: 100px;
+    }
+  }
+  .hero-section .singer-avatar-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  .hero-section .singer-info {
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  @media screen and (max-width: 768px) {
+    .hero-section .singer-info {
+      height: 100%;
+    }
+  }
+  .hero-section .singer-name {
+    margin: 0;
+    color: #333;
+    font-family: $zh-tw-noto;
+    font-weight: 300;
+    display: flex;
+    flex-direction: column;
+  }
+  @media screen and (max-width: 768px) {
+    .hero-section .singer-name {
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  .hero-section .singer-name::after {
+    content: '';
+    width: 100%;
+    margin-top: 20px;
+    border-bottom: 1px solid #333;
+  }
+  .hero-section .show-time-container {
+    width: 120px;
+    color: $secondary-green-dark;
+    font-family: $zh-tw-noto;
+    display: flex;
+    flex-direction: column;
+  }
+  @media screen and (max-width: 768px) {
+    .hero-section .show-time-container {
+      width: 80px;
+      align-items: center;
+    }
+  }
+  .hero-section .show-time-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  @media screen and (max-width: 768px) {
+    .hero-section .show-time-content {
+      justify-content: space-between;
+    }
+  }
+  .hero-section .show-time-content .date,
+  .hero-section .show-time-content .time {
+    font-weight: 300;
+  }
+  /* slogen */
+  .hero-section .wave {
+    width: 100%;
+    height: 14.5vw;
+    /* height: 280px; */
+    background: url($domain + '/images/home/home-hero-slogen-bg.png')
+      no-repeat;
+    background-size: cover;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+  }
+  @media screen and (max-width: 768px) {
+    .hero-section .wave {
+      display: none;
+    }
+  }
+  .hero-section .wave-content-container {
+    width: 26vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 14vw;
+  }
+  .hero-section .elfin-container {
+    width: 5.7vw;
+  }
+  .hero-section .slogen-container {
+    width: 17.7vw;
+  }
+  .hero-section .slogen-container h1 {
+    line-height: 2.6vw;
+    color: $primary-lightbrown;
+    font-family: $zh-tw-maru;
+    font-size: 2.08vw;
+  }
+  .hero-section .slogen-container img {
+    width: 5.7vw;
+    margin: 0 1.04vw;
+  }
+  .hero-section .slogen-container span {
+    font-family: $zh-tw-maru;
+    font-size: 2.08vw;
+    color: $accent-red;
+  }
+
+  /********** 網站導覽 section **********/
+  .tour-section {
+    background-image: url($domain + '/images/home/home-tour-bg.png');
+    background-position: center 100%;
+  }
+  @media screen and (max-width: 768px) {
+    .tour-section {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+  }
+  .tour-section .title {
+    color: $secondary-green-dark;
+    font-family: $zh-tw-maru;
+    text-align: center;
+  }
+  /* 網站導覽功能列 */
+  .tour-section .features-container {
+    background-color: #fff;
+  }
+  .tour-section .features-container ul {
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+    padding: 0;
+  }
+  @media screen and (max-width: 768px) {
+    .tour-section .features-container ul {
+      margin: 0;
+      flex-direction: column;
+      position: absolute;
+      top: 50%;
+      left: 5px;
+      transform: translate(0, -50%);
+    }
+  }
+  .tour-section .features-container li {
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    opacity: 0.6;
+  }
+  @media screen and (max-width: 768px) {
+    .tour-section .features-container li {
+      height: calc(100vh / 7);
+      justify-content: center;
+    }
+  }
+  .tour-section .features-container li[class='action'] {
+    opacity: 1;
+  }
+  .tour-section .features-container li:not([class='action']) {
+    cursor: pointer;
+  }
+  .tour-section .features-container i {
+    font-size: 60px;
+    color: $primary-lightgreen;
+  }
+  @media screen and (max-width: 768px) {
+    .tour-section .features-container i {
+      font-size: 30px;
+    }
+  }
+  .tour-section .features-container h3 {
+    font-family: $zh-tw-noto;
+    color: $primary-lightbrown;
+  }
+  @media screen and (max-width: 768px) {
+    .tour-section .features-container h3 {
+      font-size: 1rem;
+    }
+  }
+  /* 介紹(影片、圖片、說明文字) */
+  .tour-section .introduction-container {
+    height: 400px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  @media screen and (max-width: 768px) {
+    .tour-section .introduction-container {
+      height: unset;
+      flex-grow: 0.5;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+  }
+  .tour-section .screen-container {
+    width: 550px;
+    height: 350px;
+    background: linear-gradient(135deg, #fded82 10%, #fee0dc 90%);
+    box-shadow: 3px 3px 5px #333;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  @media screen and (max-width: 1200px) {
+    .tour-section .screen-container {
+      width: 45.83vw;
+      height: 29.16vw;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .tour-section .screen-container {
+      width: 210px;
+      height: 170px;
+    }
+  }
+  .tour-section .screen-container > iframe,
+  .tour-section .screen-container > img,
+  .tour-section .screen-container > video {
+    width: 530px;
+    height: 315px;
+    border-radius: 20px;
+    object-fit: cover;
+  }
+  @media screen and (max-width: 1200px) {
+    .tour-section .screen-container > iframe,
+    .tour-section .screen-container > img,
+    .tour-section .screen-container > video {
+      width: 44.16vw;
+      height: 26.25vw;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .tour-section .screen-container > iframe,
+    .tour-section .screen-container > img,
+    .tour-section .screen-container > video {
+      width: 190px;
+      height: 120px;
+    }
+  }
+  .tour-section .explanation-container {
+    width: 550px;
+    height: 350px;
+  }
+  @media screen and (max-width: 1200px) {
+    .tour-section .explanation-container {
+      width: 45.83vw;
+      height: 29.16vw;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .tour-section .explanation-container {
+      height: 100%;
+    }
+  }
+  .tour-section .feature-link {
+    width: 380px;
+    height: 60px;
+    line-height: 60px;
+    color: $secondary-green-dark;
+    background-color: #efefef;
+    font-size: 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  @media screen and (max-width: 1000px) {
+    .tour-section .feature-link {
+      width: 38vw;
+      height: 6vw;
+      line-height: 6vw;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .tour-section .feature-link {
+      height: 40px;
+      line-height: 40px;
+    }
+  }
+  .tour-section .explanation-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .tour-section .explanation {
+    color: $accent-red;
+    font-family: $zh-tw-noto;
+    font-size: 1.4rem;
+    text-align: center;
+  }
+  .tour-section .sub-explanation {
+    line-height: 60px;
+    margin: 0;
+    color: $primary-lightbrown;
+    font-family: $zh-tw-noto;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  /********* 下半部網頁 **********/
+  .other-sections {
+    width: 100%;
+    position: relative;
+  }
+  /* 背景圖右邊 */
+  .other-sections::before {
+    content: '';
+    /* width: 350px; */
+    width: 18.23vw;
+    height: 1874px;
+    transform: translateY(500px);
+    background-image: url($domain + '/images/home/home-other-bg-right.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    right: 0;
+    z-index: -1;
+  }
+  /* 背景圖左邊 */
+  .other-sections::after {
+    content: '';
+    /* width: 440px; */
+    /* height: 1690px; */
+    width: 22.92vw;
+    height: 88vw;
+    background-image: url($domain + '/images/home/home-other-bg-left.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 2200px;
+    left: 0;
+    z-index: -1;
+  }
+
+  /********* 駐唱歌手 section **********/
+  .singers-section {
+    height: unset;
+  }
+  @media screen and (max-width: 768px) {
+    .singers-section {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+    }
+  }
+  .singers-section .introduction-container {
+    display: flex;
+    justify-content: center;
+  }
+  @media screen and (max-width: 768px) {
+    .singers-section .introduction-container {
+      flex-grow: 0.5;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      position: relative;
+    }
+  }
+  /* 手機板 箭頭 */
+  .singers-section .arrow-container {
+    display: none;
+  }
+  @media screen and (max-width: 768px) {
+    .singers-section .arrow-container {
+      display: block;
+      width: 30px;
+      height: 100%;
+      position: absolute;
+      top: 0;
+    }
+    .singers-section .arrow-container i {
+      font-size: 4rem;
+      color: $accent-orange;
+      opacity: 0.5;
+      position: absolute;
+      top: 50%;
+      transform: translate(0, -50%);
+      cursor: pointer;
+      animation-duration: 1s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+    .singers-section .arrow-container.left {
+      left: 0;
+      background: linear-gradient(to left, #fff, #eee);
+    }
+    .singers-section .arrow-container.left i {
+      left: 30px;
+      animation-name: arrow-left-animation;
+    }
+    .singers-section .arrow-container.right {
+      right: 0;
+      background: linear-gradient(to right, #fff, #eee);
+    }
+    .singers-section .arrow-container.right i {
+      right: 30px;
+      animation-name: arrow-right-animation;
+    }
+    .singers-section .arrow-container i:hover,
+    .singers-section .arrow-container i:hover {
+      opacity: 1;
+      animation-play-state: paused;
+    }
+  }
+  /* 歌手照片 */
+  .singers-section .screen-container {
+    width: 380px;
+    height: 380px;
+    align-self: center;
+  }
+  @media screen and (max-width: 1300px) {
+    .singers-section .screen-container {
+      width: 28vw;
+      height: 28vw;
+      line-height: 28vw;
+    }
+  }
+  .singers-section .screen-container img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  /* 歌手介紹 */
+  .singers-section .explanation-container {
+    width: 800px;
+    margin: 0 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  @media screen and (max-width: 1300px) {
+    .singers-section .explanation-container {
+      width: 60vw;
+      margin: 0;
+      flex-grow: 0.5;
+      align-items: center;
+    }
+  }
+  .singers-section .explanation-container .name {
+    color: $secondary-green-dark;
+    font-family: $zh-tw-noto;
+    font-weight: 100;
+  }
+  .singers-section .explanation-container .explanation {
+    line-height: 30px;
+    color: $secondary-green-dark;
+    font-family: $zh-tw-noto;
+  }
+  .singers-section .explanation-container .more-link {
+    width: 150px;
+    height: 45px;
+    text-decoration: none;
+    font-family: $zh-tw-noto;
+    font-weight: 300;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .singers-section .explanation-container .more-link i {
+    font-size: 30px;
+  }
+  .singers-section .explanation-container .toggle-box-container {
+    width: 400px;
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  @media screen and (max-width: 768px) {
+    .singers-section .explanation-container .toggle-box-container {
+      display: none;
+    }
+  }
+  .singers-section .explanation-container .toggle-box {
+    width: 40px;
+    height: 20px;
+    background-color: $primary-lightgreen;
+    opacity: 0.4;
+    cursor: pointer;
+  }
+
+  /********* 客戶好評 section **********/
+  .comment-section {
+    height: 630px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  /* 評論卡片容器(含箭頭) */
+  .comment-section .comment-card-row-container {
+    width: 90vw;
+    height: 400px;
+    padding: 0 30px;
+    position: relative;
+  }
+  @media screen and (max-width: 768px) {
+    .comment-section .comment-card-row-container {
+      padding: 0;
+    }
+  }
+  /* 箭頭共同部分 */
+  .comment-section .arrow-left-container i,
+  .comment-section .arrow-right-container i {
+    color: $accent-orange;
+    opacity: 0.5;
+    cursor: pointer;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+  .comment-section .arrow-left-container i:hover,
+  .comment-section .arrow-right-container i:hover {
+    opacity: 1;
+    animation-play-state: paused;
+  }
+  /* 左邊箭頭容器 */
+  .comment-section .arrow-left-container {
+    width: 30px;
+    height: 373px;
+    position: absolute;
+    left: 30px;
+    font-size: 4rem;
+    background-color: #fff;
+    box-shadow: -10px 0 20px 10px rgba(255, 255, 255, 1);
+    transform: scale(0.85);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  @media screen and (max-width: 768px) {
+    .comment-section .arrow-left-container {
+      left: 10px;
+    }
+  }
+  .comment-section .arrow-left-container i {
+    animation-name: arrow-left-animation;
+  }
+  /* 右邊箭頭 */
+  .comment-section .arrow-right-container {
+    width: 30px;
+    height: 373px;
+    position: absolute;
+    top: 0;
+    right: 30px;
+    font-size: 4rem;
+    background-color: #fff;
+    box-shadow: 10px 0 20px 10px rgba(255, 255, 255, 1);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  @media screen and (max-width: 768px) {
+    .comment-section .arrow-right-container {
+      right: 10px;
+    }
+  }
+  .comment-section .arrow-right-container i {
+    animation-name: arrow-right-animation;
+  }
+  /* 評論卡片容器(不含箭頭) */
+  .comment-section .comment-card-row {
+    width: 100%;
+    margin-left: 10px;
+    display: flex;
+    white-space: nowrap;
+    overflow-y: auto;
+  }
+  /* 評論卡片 */
+  .comment-section .comment-card {
+    width: 260px;
+    /* height: 320px; */
+    margin: 0 20px 10px 0;
+    padding: 10px 30px;
+    box-shadow: 2px 2px 7px #aaa;
+    border-radius: 20px;
+    background-color: #fff;
+  }
+  /* 評論：作者、歌手 */
+  .comment-section .user-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: $primary-lightbrown;
+    font-family: $zh-tw-noto;
+  }
+  .comment-section .comment-card hr {
+    width: 100%;
+    height: 1px;
+    margin: 15px 0 0 0;
+    background-color: $primary-lightbrown;
+    opacity: 0.5;
+    border: none;
+  }
+  .comment-section .user-container .avatar {
+    width: 60px;
+    border-radius: 50%;
+  }
+  .comment-section .user-container .singer-name {
+    align-self: flex-end;
+    font-size: 1.1rem;
+    font-weight: 800;
+  }
+  /* 評論：評分 */
+  .comment-section .ratings-container {
+    margin: 10px 0;
+    font-size: 50px;
+    text-align: center;
+    text-align-last: center;
+    position: relative;
+  }
+  .comment-section .empty-stars {
+    width: 100%;
+    color: #ddd;
+  }
+  .comment-section .full-stars {
+    width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    color: $secondary-lightyellow;
+    position: absolute;
+    top: 0;
+  }
+  .comment-section .content-container {
+    height: 200px;
+    color: $primary-lightbrown;
+    word-break: break-all;
+    word-wrap: break-word;
+    /* text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden; */
+  }
+  .comment-section .comment-link {
+    width: 150px;
+    height: 45px;
+    text-decoration: none;
+    font-weight: 300;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  @media screen and (max-width: 768px) {
+    .comment-section .comment-link {
+      height: 40px;
+    }
+  }
+
+  /********* 誰來表演 section **********/
+  .vote-section {
+    /* height: 937px; */
+    height: 100vh;
+    margin-top: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  @media screen and (max-width: 768px) {
+    .vote-section {
+      display: none;
+    }
+  }
+  /* 五線譜 */
+  .vote-section .staff-container {
+    width: 100%;
+    height: 400px;
+
+    background-image: url($domain + '/images/home/home-vote-secttion-staff.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  /* 歌手 */
+  .vote-section .singer-container {
+    width: 10vw;
+    height: 10vw;
+  }
+  .vote-section .singer-container img {
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+  }
+  .vote-section .singer-name {
+    margin: 10px 0;
+    font-family: $zh-tw-noto;
+    font-weight: 100;
+    color: $secondary-green-dark;
+    text-align: center;
+  }
+  .vote-section .votes {
+    font-family: $zh-tw-noto;
+    font-weight: 100;
+    color: $accent-orange;
+    text-align: center;
+  }
+  /* 按鈕 */
+  .vote-section .btn-container {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  /********* 手機版 誰來表演 section **********/
+  .vote-section-md {
+    display: none;
+  }
+  @media screen and (max-width: 768px) {
+    .vote-section-md {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+    .vote-section-md .sub-title {
+      color: $primary-lightbrown;
+      font-family: $zh-tw-noto;
+    }
+    .vote-section-md .singers-row {
+      width: 100%;
+      padding: 0 30px;
+      box-sizing: border-box;
+      flex-grow: 0.5;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+    .vote-section-md .singer-row {
+      width: 100%;
+      height: 60px;
+      background-color: #fff;
+      border: 1px solid $secondary-green;
+      border-radius: 70px;
+      box-shadow: 0 3px 6px rgba(50, 50, 50, 0.5);
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      transition: 0.3s;
+    }
+    .vote-section-md .singer-row.active {
+      background-color: $secondary-green;
+      box-shadow: unset;
+    }
+    .vote-section-md .singer-row.active .name,
+    .vote-section-md .singer-row.active .votes {
+      color: #fff;
+    }
+    .vote-section-md .picture {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .vote-section-md .name {
+      color: $primary-lightbrown;
+      font-family: $zh-tw-noto;
+      font-size: 1.17rem;
+    }
+    .vote-section-md .votes {
+      color: $accent-orange;
+      font-family: $zh-tw-noto;
+      font-size: 1.17rem;
+    }
+    .vote-section-md .btn-vote {
+      height: 40px;
+    }
+  }
+
+  /********* 音樂遊戲 section **********/
+  .game-section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .game-section .points-container {
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  .game-section .points-container:last-child {
+    flex-direction: column-reverse;
+  }
+  .game-section .point {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: $primary-lightbrown;
+    opacity: 0.3;
+    animation-iteration-count: infinite;
+    animation-duration: 3s;
+  }
+  .game-section .point:nth-child(1) {
+    animation-name: point1-animation;
+  }
+  .game-section .point:nth-child(2) {
+    animation-name: point2-animation;
+  }
+  .game-section .point:nth-child(3) {
+    animation-name: point3-animation;
+  }
+  .game-section .game-row h2 {
+    margin-bottom: 30px;
+    color: $primary-lightbrown;
+    font-family: $zh-tw-noto;
+    text-align: center;
+  }
+  .game-section .game-container {
+    width: 600px;
+    height: 350px;
+    background: linear-gradient(135deg, #fded82 10%, #fee0dc 90%);
+    border-radius: 20px;
+    box-shadow: 3px 3px 5px #333;
+    padding: 15px 10px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  @media screen and (max-width: 768px) {
+    .game-section .game-container {
+      width: 100%;
+      height: 235px;
+    }
+  }
+
+  /********* 線上訂位 section **********/
+  .reservation-section {
+    height: 937px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+  @media screen and (max-width: 768px) {
+    .reservation-section {
+      display: none;
+    }
+  }
+  /* 訂位列 */
+  .reservation-section .reservation-row {
+    padding: 0 30px;
+    flex-grow: 0.5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  /* 訂位步驟列 */
+  .reservation-section .steps-row {
+    display: flex;
+  }
+  /* 訂位步驟 */
+  .reservation-section .steps-row .step-container {
+    width: 200px;
+    height: 80px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  @media screen and (max-width: 1300px) {
+    .reservation-section .steps-row .step-container {
+      width: 15.39vw;
+    }
+  }
+  /* 訂位步驟(背景) */
+  .reservation-section .step-container.bg-setting {
+    background-image: url($domain + '/images/home/home-reservation-step-bg.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  /* 訂位步驟之音階 */
+  .reservation-section .step-container .scale-container {
+    width: 60px;
+    transform: translateY(-15px);
+  }
+  @media screen and (max-width: 1300px) {
+    .reservation-section .step-container .scale-container {
+      width: 4.62vw;
+    }
+  }
+  /* 訂位步驟之音階標題 */
+  .reservation-section .step-container .figcaption {
+    color: $secondary-green-dark;
+    font-family: $zh-tw-maru;
+  }
+  @media screen and (max-width: 1300px) {
+    .reservation-section .step-container .figcaption {
+      font-size: 1.2rem;
+    }
+  }
+  /* 訂位步驟之音階標題(灰色) */
+  .reservation-section .step-container .figcaption.gray {
+    color: #d9d9d9;
+  }
+  /* 訂位步驟之箭頭 */
+  .reservation-section .steps-row .arrow-container {
+    width: 250px;
+    margin: 0 10px;
+  }
+  @media screen and (max-width: 1300px) {
+    .reservation-section .steps-row .arrow-container {
+      width: 19.23vw;
+    }
+  }
+  /* 訂位之座位圖形列 */
+  .reservation-section .seats-graph-row {
+    width: 100%;
+    height: 60px;
+    background-color: #ccc;
+    border-radius: 40px;
+    box-shadow: 0px 0px 10px 2px #bbb;
+    overflow: hidden;
+    display: flex;
+  }
+  /* 訂位之座位圖形 */
+  .reservation-section .seat-graph {
+    height: 100%;
+    position: relative;
+  }
+  /* 訂位之座位圖形之波浪 */
+  .reservation-section .seat-graph::before {
+    content: '';
+    width: 120px;
+    height: 120px;
+    border-radius: 35%;
+    position: absolute;
+    top: -50%;
+    right: -15px;
+    z-index: 1;
+    animation-name: seat-graph-animation;
+    animation-duration: 9s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+  .reservation-section .seat-graph.orange {
+    width: 20%;
+    border-radius: 40px 0 0 40px;
+    background-color: $accent-orange;
+  }
+  .reservation-section .seat-graph.orange::before {
+    background-color: $accent-orange;
+  }
+  .reservation-section .seat-graph.green {
+    width: 35%;
+    border-radius: 0 40px 40px 0;
+    background-color: $secondary-green;
+  }
+  .reservation-section .seat-graph.green::before {
+    background-color: $secondary-green;
+  }
+  .reservation-section .seat-graph.yellow {
+    width: 35%;
+    background-color: $secondary-lightyellow;
+  }
+  .reservation-section .seat-graph.yellow::before {
+    background-color: $secondary-lightyellow;
+  }
+  /* 訂位之座位文字列 */
+  .reservation-section .seats-text-row {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+  }
+  .reservation-section .seats-text-row .seats-left {
+    color: $primary-lightbrown;
+    flex-grow: 0.05;
+    font-family: $zh-tw-noto;
+    font-weight: 600;
+  }
+  .reservation-section .seats-text-row .seats-front,
+  .reservation-section .seats-text-row .seats-middle,
+  .reservation-section .seats-text-row .seats-back {
+    flex-grow: 0.07;
+    color: $primary-lightbrown;
+    font-family: $zh-tw-noto;
+    display: flex;
+  }
+  .reservation-section .seats-text-row .circle {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .reservation-section .seats-front .circle {
+    background-color: $accent-orange;
+  }
+  .reservation-section .seats-middle .circle {
+    background-color: $secondary-green;
+  }
+  .reservation-section .seats-back .circle {
+    background-color: $secondary-lightyellow;
+  }
+  .reservation-section .seats-text-row .seats-count {
+    color: $accent-red;
+    font-weight: 600;
+  }
+  /* 訂位之歌手行事曆列 */
+  .reservation-section .singer-calendar-row {
+    width: 1140px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  @media screen and (max-width: 1300px) {
+    .reservation-section .singer-calendar-row {
+      width: 87.69vw;
+    }
+  }
+  .reservation-section .singer-calendar-row .singer-calendar {
+    flex-grow: 1;
+    padding: 10px 30px;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  @media screen and (max-width: 1300px) {
+    .reservation-section .singer-calendar-row .singer-calendar {
+      padding: 10px 2.3vw;
+    }
+  }
+  .reservation-section .singer-calendar:first-child,
+  .reservation-section .singer-calendar:nth-child(6) {
+    padding-left: 0;
+  }
+  .reservation-section .singer-calendar:nth-child(5),
+  .reservation-section .singer-calendar:nth-child(10),
+  .reservation-section .singer-calendar:last-child {
+    padding-right: 0;
+  }
+  .reservation-section .singer-calendar .day {
+    margin-bottom: 5px;
+    color: $primary-lightbrown;
+    font-family: $zh-tw-noto;
+    font-weight: 400;
+  }
+  .reservation-section .singer-calendar .picture {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+  }
+  @media screen and (max-width: 1300px) {
+    .reservation-section .singer-calendar .picture {
+      width: 12.3vw;
+      height: 12.3vw;
+    }
+  }
+  .reservation-section .btn-container .next-btn {
+    cursor: pointer;
+  }
+  /********* 手機版 線上訂位 section **********/
+  .reservation-section-md {
+    display: none;
+  }
+  @media screen and (max-width: 768px) {
+    .reservation-section-md {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+    .reservation-section-md .sub-title {
+      color: $primary-lightbrown;
+      font-family: $zh-tw-noto;
+    }
+    .reservation-section-md .reservation-row {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+    .reservation-section-md .steps-row {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+    /* 訂位步驟 */
+    .reservation-section-md .steps-row .step-container {
+      width: calc(100% / 3);
+      /* height: 80px; */
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    /* 訂位步驟(背景) */
+    .reservation-section-md .step-container.bg-setting {
+      background-image: url($domain + '/images/home/home-reservation-step-bg.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    /* 訂位步驟之音階 */
+    .reservation-section-md .step-container .scale-container {
+      width: 30px;
+      transform: translateY(-10px);
+    }
+    /* 訂位步驟之音階標題 */
+    .reservation-section-md .step-container .figcaption {
+      color: $secondary-green-dark;
+      font-family: $zh-tw-maru;
+    }
+    /* 訂位步驟之音階標題(灰色) */
+    .reservation-section-md .step-container .figcaption.gray {
+      color: #d9d9d9;
+    }
+    /* 訂位步驟之箭頭 */
+    .reservation-section-md .steps-row .arrow {
+      margin: 0 10px;
+      color: #d9d9d9;
+    }
+    /* 線上訂位之本周、下周列 */
+    .reservation-section-md .weeks-row {
+      width: 80%;
+      height: 32px;
+      line-height: 32px;
+      border: 1px solid $accent-orange;
+      border-radius: 32px;
+      font-family: $zh-tw-noto;
+      text-align: center;
+      display: flex;
+      justify-content: space-evenly;
+    }
+    .reservation-section-md .weeks-row .this-week {
+      width: 100%;
+      background-color: #fff;
+      border-radius: 32px 0 0 32px;
+      box-shadow: 0 3px 6px rgba(50, 50, 50, 0.5);
+      color: $accent-orange;
+    }
+    .reservation-section-md .weeks-row .next-week {
+      width: 100%;
+      background-color: #fff;
+      border-radius: 0 32px 32px 0;
+      box-shadow: 0 3px 6px rgba(50, 50, 50, 0.5);
+      color: $accent-orange;
+    }
+    .reservation-section-md .this-week.active,
+    .reservation-section-md .next-week.active {
+      background-color: $accent-orange;
+      box-shadow: unset;
+      color: #fff;
+    }
+    /* 線上訂位之歌手行事曆 */
+    .reservation-section-md .singer-calendars-row {
+      width: 100%;
+      flex-grow: 0.8;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+    }
+    .reservation-section-md .singer-calendar {
+      width: 100%;
+      height: 40px;
+      border: 1px solid $secondary-green;
+      box-shadow: 0 3px 6px rgba(50, 50, 50, 0.5);
+      font-family: $zh-tw-noto;
+      font-weight: 100;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      position: relative;
+    }
+    .reservation-section-md .singer-calendar::before {
+      content: '';
+    }
+    .reservation-section-md .singer-calendar.active {
+      background-color: $secondary-green;
+      box-shadow: unset;
+    }
+    .reservation-section-md .singer-calendar.active .name,
+    .reservation-section-md .singer-calendar.active .date {
+      color: #fff;
+    }
+    .reservation-section-md .singer-calendar .picture {
+      width: 60px;
+      height: 60px;
+      padding: 3px;
+      background-color: #fff;
+      border-radius: 50%;
+      border: 1px solid $secondary-green;
+      object-fit: cover;
+      position: absolute;
+      left: -20px;
+    }
+    .reservation-section-md .singer-calendar .name {
+      color: $primary-lightbrown;
+    }
+    .reservation-section-md .singer-calendar .date {
+      color: $accent-orange;
+    }
+    .reservation-section-md .btn-row {
+      display: block;
+    }
+    .reservation-section-md .btn-row .next-step-btn {
+      height: 40px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+    .reservation-section-md .btn-row .next-step-btn i {
+      font-size: 2rem;
+    }
+  }
+
+  /********* 外送訂餐 section **********/
+  .delivery-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .delivery-section .delivery-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  /* 外送訂餐之種類列 */
+  .delivery-section .categories-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .delivery-section .category {
+    width: 150px;
+    height: 100px;
+    margin: 0 1.04vw;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  @media screen and (max-width: 768px) {
+    .delivery-section .category {
+      width: 90px;
+      height: fit-content;
+    }
+  }
+  .delivery-section .category.main-course {
+    background-image: url($domain + '/images/home/home-delivery-category-bg-green.svg');
+  }
+  .delivery-section .category.side {
+    background-image: url($domain + '/images/home/home-delivery-category-bg-gray.svg');
+    opacity: 0.5;
+  }
+  .delivery-section .category.dessert {
+    background-image: url($domain + '/images/home/home-delivery-category-bg-pink.svg');
+    opacity: 0.5;
+  }
+  .delivery-section .category .scale {
+    width: 40px;
+    transform: translateY(-15px);
+  }
+  .delivery-section .category .figcaption {
+    color: $secondary-green-dark;
+    font-family: $zh-tw-maru;
+  }
+  /* 外送訂餐之餐點列 */
+  .delivery-section .dishes-row {
+    display: flex;
+  }
+  @media screen and (max-width: 768px) {
+    .delivery-section .dishes-row {
+      width: 100%;
+      overflow-y: auto;
+    }
+  }
+  .delivery-section .dishes-row .dish-container {
+    width: 280px;
+    height: 400px;
+    background-color: $primary-lightgreen;
+    border-radius: 20px;
+    box-sizing: border-box;
+    padding: 10px;
+    margin: 0 2.6vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  @media screen and (max-width: 1100px) {
+    .delivery-section .dishes-row .dish-container {
+      width: 25.45vw;
+      height: 36.36vw;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .delivery-section .dishes-row .dish-container {
+      width: 230px;
+      height: 290px;
+    }
+  }
+  /* 手機版 dish照片，為了手機移動而改變大小 */
+  @media screen and (max-width: 768px) {
+    .delivery-section .dish-container .dish-picture {
+      width: 210px;
+      height: 60%;
+    }
+  }
+  .delivery-section .dish-container .dish-picture img {
+    border-radius: 20px 20px 0 0;
+    object-fit: cover;
+  }
+  .delivery-section .dish-container .dish-content {
+    text-align: center;
+  }
+  .delivery-section .dish-content .dish-name,
+  .delivery-section .dish-content .dish-price {
+    margin: 5px;
+    color: #333;
+    font-family: $zh-tw-noto;
+    font-weight: 300;
+  }
+  .delivery-section .dish-container .btn-container {
+    flex-grow: 0.3;
+  }
+  .delivery-section .btn-container button {
+    width: 100px;
+    height: 40px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    cursor: pointer;
+  }
+  /* 外送訂餐之按鈕列 */
+  .delivery-section .btn-row .delivery-link {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .delivery-section .btn-row .delivery-link i {
+    transform: translateX(10px);
+  }
+  @media screen and (max-width: 768px) {
+    .delivery-section .btn-row .delivery-link {
+      height: 40px;
+    }
+  }
+}
