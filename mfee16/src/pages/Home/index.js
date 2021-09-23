@@ -2,8 +2,7 @@ import Header from '../../components/Header';
 import Fooder from '../../components/Footer';
 import SectionHero from '../../components/Home/SectionHero';
 import SectionTour from '../../components/Home/SectionTour';
-import SectionSingers from '../../components/Home/SectionSingers';
-import SectionComment from '../../components/Home/SectionComment';
+import SingerComment from '../../components/Home/SingersComment';
 import SectionVote from '../../components/Home/SectionVote';
 import SectionGame from '../../components/Home/SectionGame';
 import SectionReservation from '../../components/Home/SectionReservation';
@@ -24,11 +23,8 @@ function Home() {
 
         {/* 下半部網頁 */}
         <div class="other-sections">
-          {/* 駐唱歌手 */}
-          <SectionSingers />
-
-          {/* 客戶好評 */}
-          <SectionComment />
+          {/* 駐唱歌手、客戶好評 */}
+          <SingerComment />
 
           {/* 誰來表演 */}
           <SectionVote />

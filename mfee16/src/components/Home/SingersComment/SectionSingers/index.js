@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import SingersContent from './SingersContent';
 import ToggleBox from './ToggleBox';
-import { API_GET_SINGERS } from '../../../global/constants';
-import '../../../styles/home/home-section-singers.scss';
+import { API_GET_SINGERS } from '../../../../global/constants';
+import '../../../../styles/home/home-section-singers.scss';
 
 // 取得資料庫 singer 表格
 const fetchData = async (setSingers, setCurrentSingerId, setDidMount) => {
@@ -40,9 +40,9 @@ const fetchData = async (setSingers, setCurrentSingerId, setDidMount) => {
   setDidMount(false);
 };
 
-function SectionSingers() {
+function SectionSingers(prop) {
+  const { currentSingerId, setCurrentSingerId } = prop;
   const [didMount, setDidMount] = useState(true);
-  const [currentSingerId, setCurrentSingerId] = useState(null);
   const [singers, setSingers] = useState([
     {
       singerId: '',
