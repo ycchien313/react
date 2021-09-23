@@ -15,9 +15,9 @@ const screen = {
       <iframe
         src="https://www.youtube.com/embed/aaa"
         title="YouTube video player"
-        frameborder="0"
+        frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
+        allowFullScreen
       ></iframe>
     </>
   ),
@@ -158,14 +158,6 @@ const explanation = {
     </>
   ),
 };
-// const explanation = {
-//   'live 直播': {
-//     url: 'url',
-//     btnContent: '觀看 live 直播',
-//     exp: '在線上即時看精彩的音樂表演',
-//     subExp: '表演者：楊丞琳' + <br /> + '演出時間：08/26 20:00',
-//   },
-// };
 
 function FeaturesContent(prop) {
   const { featureName } = prop;
@@ -175,18 +167,6 @@ function FeaturesContent(prop) {
       <div className="introduction-container width-limit">
         <div className="screen-container">{screen[featureName]}</div>
         <div className="explanation-container">{explanation[featureName]}</div>
-        {/* <div className="explanation-container">
-          <a
-            href={explanation[featureName]['url']}
-            className="feature-link guide-button"
-          >
-            {explanation[featureName]['btnContent']}
-          </a>
-          <h4 className="explanation">{explanation[featureName]['exp']}</h4>
-          <p className="sub-explanation">
-            {explanation[featureName]['subExp']}
-          </p>
-        </div> */}
       </div>
     </>
   );
