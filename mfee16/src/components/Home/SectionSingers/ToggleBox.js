@@ -1,30 +1,21 @@
-import { useState } from 'react';
+import { v4 } from 'uuid';
 
-/*
-1.讀後端資料
-2.計算有幾位歌手
-3.依照歌手數量生成該數量之盒子
-*/
-
-const singersId = [1, 2, 3, 4, 5, 6];
-
-function ToggleBox() {
-  const [singerId, setSingerId] = useState(1);
+function ToggleBox(prop) {
+  const { singers, currentSingerId, setCurrentSingerId } = prop;
 
   return (
     <div className="toggle-box-container">
-      {/* <div className="toggle-box action"></div>
-      <div className="toggle-box"></div>
-      <div className="toggle-box"></div>
-      <div className="toggle-box"></div>
-      <div className="toggle-box"></div>
-      <div className="toggle-box"></div> */}
-      {singersId.map((item) => {
+      {singers.map((value) => {
         return (
           <div
-            className={singerId === item ? 'toggle-box action' : 'toggle-box'}
+            key={v4()}
+            className={
+              value['singerId'] === currentSingerId
+                ? 'toggle-box action'
+                : 'toggle-box'
+            }
             onClick={() => {
-              setSingerId(item);
+              setCurrentSingerId(value['singerId']);
             }}
           ></div>
         );
