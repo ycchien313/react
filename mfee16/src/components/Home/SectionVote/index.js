@@ -1,143 +1,62 @@
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import Table from './Table';
+import Mobile from './Mobile';
+import { API_GET_VOTES } from '../../../global/constants';
+import '../../../styles/home/home-section-vote.scss';
+
+// 取得後端資料
+const fetchData = async (setSingers) => {
+  // axios
+  const config = { method: 'GET', url: API_GET_VOTES };
+  const response = await axios(config);
+
+  // 格式化資料
+  const formatData = () => {
+    let data = [];
+
+    response.data.forEach((value) => {
+      const { id, picture, name, count } = value;
+      data = [
+        ...data,
+        {
+          singerId: id,
+          pictureUrl: `${process.env.PUBLIC_URL}/images/common/${picture}`,
+          name: name,
+          votes: count,
+        },
+      ];
+    });
+
+    return data;
+  };
+
+  // 設定 singers 狀態
+  setSingers(formatData());
+};
+
 function SectionVote() {
+  const [voted, setVoted] = useState(false);
+  const [singers, setSingers] = useState([
+    { singerId: '', pictureUrl: '', name: '', votes: '' },
+  ]);
+
+  // componentDidMount
+  useEffect(() => {
+    fetchData(setSingers);
+    setVoted(false);
+  }, [voted]);
+
+  // componentDidUpdate
+  // useEffect(() => {}, []);
+
   return (
     <>
-      {/* 誰來表演 */}
-      <section class="vote-section">
-        <div class="title-row">
-          <div class="title-container">
-            <figure class="elfin-container">
-              <img
-                src={
-                  process.env.PUBLIC_URL +
-                  '/images/home/home-hero-elfin-green.png'
-                }
-                alt=""
-              />
-            </figure>
-            <h2 class="title">誰來表演</h2>
-          </div>
-          <h3 class="sub-title">用你的票決定下一次的歌手</h3>
-        </div>
-        <div class="staff-container">
-          <figure class="singer-container">
-            <img
-              src={process.env.PUBLIC_URL + '/images/home/home-hero-楊丞琳.jpg'}
-              alt=""
-            />
-            <figcaption class="singer-name h4">楊丞琳</figcaption>
-            <figcaption class="votes h4">10票</figcaption>
-          </figure>
-          <figure class="singer-container">
-            <img
-              src={process.env.PUBLIC_URL + '/images/home/home-hero-楊丞琳.jpg'}
-              alt=""
-            />
-            <figcaption class="singer-name h4">楊丞琳</figcaption>
-            <figcaption class="votes h4">10票</figcaption>
-          </figure>
-          <figure class="singer-container">
-            <img
-              src={process.env.PUBLIC_URL + '/images/home/home-hero-楊丞琳.jpg'}
-              alt=""
-            />
-            <figcaption class="singer-name h4">楊丞琳</figcaption>
-            <figcaption class="votes h4">10票</figcaption>
-          </figure>
-          <figure class="singer-container">
-            <img
-              src={process.env.PUBLIC_URL + '/images/home/home-hero-楊丞琳.jpg'}
-              alt=""
-            />
-            <figcaption class="singer-name h4">楊丞琳</figcaption>
-            <figcaption class="votes h4">10票</figcaption>
-          </figure>
-          <figure class="singer-container">
-            <img
-              src={process.env.PUBLIC_URL + '/images/home/home-hero-楊丞琳.jpg'}
-              alt=""
-            />
-            <figcaption class="singer-name h4">楊丞琳</figcaption>
-            <figcaption class="votes h4">10票</figcaption>
-          </figure>
-          <figure class="singer-container">
-            <img
-              src={process.env.PUBLIC_URL + '/images/home/home-hero-楊丞琳.jpg'}
-              alt=""
-            />
-            <figcaption class="singer-name h4">楊丞琳</figcaption>
-            <figcaption class="votes h4">10票</figcaption>
-          </figure>
-        </div>
-        <div class="btn-container">
-          <button class="guide-button orange">投票</button>
-        </div>
-      </section>
+      {/* 誰來表演 電腦版*/}
+      <Table singers={singers} setVoted={setVoted} />
+
       {/* 誰來表演 手機版 */}
-      <section class="vote-section-md">
-        <div class="title-row">
-          <h1 class="title">誰來表演？</h1>
-          <h4 class="sub-title">用你的一票決定下次表演的歌手</h4>
-        </div>
-        <div class="singers-row">
-          <div class="singer-row active">
-            <img
-              class="picture"
-              src={process.env.PUBLIC_URL + '/images/home/home-hero-楊丞琳.jpg'}
-              alt=""
-            />
-            <span class="name">楊丞琳</span>
-            <span class="votes">0票</span>
-          </div>
-          <div class="singer-row">
-            <img
-              class="picture"
-              src={process.env.PUBLIC_URL + '/images/home/home-hero-楊丞琳.jpg'}
-              alt=""
-            />
-            <span class="name">楊丞琳</span>
-            <span class="votes">0票</span>
-          </div>
-          <div class="singer-row">
-            <img
-              class="picture"
-              src={process.env.PUBLIC_URL + '/images/home/home-hero-楊丞琳.jpg'}
-              alt=""
-            />
-            <span class="name">楊丞琳</span>
-            <span class="votes">0票</span>
-          </div>
-          <div class="singer-row">
-            <img
-              class="picture"
-              src={process.env.PUBLIC_URL + '/images/home/home-hero-楊丞琳.jpg'}
-              alt=""
-            />
-            <span class="name">楊丞琳</span>
-            <span class="votes">0票</span>
-          </div>
-          <div class="singer-row">
-            <img
-              class="picture"
-              src={process.env.PUBLIC_URL + '/images/home/home-hero-楊丞琳.jpg'}
-              alt=""
-            />
-            <span class="name">楊丞琳</span>
-            <span class="votes">0票</span>
-          </div>
-          <div class="singer-row">
-            <img
-              class="picture"
-              src={process.env.PUBLIC_URL + '/images/home/home-hero-楊丞琳.jpg'}
-              alt=""
-            />
-            <span class="name">楊丞琳</span>
-            <span class="votes">0票</span>
-          </div>
-        </div>
-        <div class="btn-row">
-          <button class="btn-vote guide-button orange">投票</button>
-        </div>
-      </section>
+      <Mobile />
     </>
   );
 }

@@ -11,7 +11,7 @@ function ToggleBox(prop) {
             key={v4()}
             className={
               value['singerId'] === currentSingerId
-                ? 'toggle-box action'
+                ? 'toggle-box active'
                 : 'toggle-box'
             }
             onClick={() => {
