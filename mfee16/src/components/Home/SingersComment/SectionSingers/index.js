@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import SingersContent from './SingersContent';
 import ToggleBox from './ToggleBox';
+import ArrowLeft from './ArrowLeft';
+import ArrowRight from './ArrowRight';
 import { API_GET_SINGERS } from '../../../../global/constants';
 import '../../../../styles/home/home-section-singers.scss';
 
@@ -51,6 +53,8 @@ function SectionSingers(prop) {
       picture: '',
     },
   ]);
+  // 當下 singers 位置，配合手機版左右箭頭切換用
+  const [currentSingersIndex, setCurrentSingersIndex] = useState(0);
 
   // componentDidMount
   useEffect(() => {
@@ -69,17 +73,27 @@ function SectionSingers(prop) {
       <h2 className="title">駐唱歌手</h2>
       <div className="introduction-container width-limit">
         {/* 手機版，左箭頭 */}
-        <div className="arrow-container left">
-          <i className="fas fa-caret-left"></i>
-        </div>
+        <ArrowLeft
+          singers={singers}
+          setCurrentSingerId={setCurrentSingerId}
+          currentSingersIndex={currentSingersIndex}
+          setCurrentSingersIndex={setCurrentSingersIndex}
+        />
 
         {/* 歌手照片、歌手介紹  */}
-        <SingersContent singers={singers} currentSingerId={currentSingerId} />
+        <SingersContent
+          singers={singers}
+          currentSingerId={currentSingerId}
+          setCurrentSingersIndex={setCurrentSingersIndex}
+        />
 
         {/* 手機版，右箭頭 */}
-        <div className="arrow-container right">
-          <i className="fas fa-caret-right"></i>
-        </div>
+        <ArrowRight
+          singers={singers}
+          setCurrentSingerId={setCurrentSingerId}
+          currentSingersIndex={currentSingersIndex}
+          setCurrentSingersIndex={setCurrentSingersIndex}
+        />
       </div>
 
       {/* 切換歌手按鈕 */}

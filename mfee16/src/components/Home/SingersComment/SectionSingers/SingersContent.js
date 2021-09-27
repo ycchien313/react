@@ -1,13 +1,16 @@
 function SingersContent(prop) {
-  const { singers, currentSingerId } = prop;
+  const { singers, currentSingerId, setCurrentSingersIndex } = prop;
 
   return (
     <>
-      {singers.map((value) => {
+      {singers.map((value, index) => {
         const { singerId, name, introduction, picture } = value;
 
         // singerId 與 toggleBox 選到的一樣，則顯示該筆歌手資訊
         if (singerId === currentSingerId) {
+          // 設定當下 singers 的位置
+          setCurrentSingersIndex(index);
+
           return (
             <>
               {/* 歌手照片 */}
