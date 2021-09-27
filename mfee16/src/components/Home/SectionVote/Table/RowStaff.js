@@ -3,10 +3,13 @@
 // 點選照片
 const handlePictureClick = (e, singerId, setSelectedSingerId) => {
   // 移除選擇後之邊框
-  let active = document.querySelectorAll('.vote-section .picture');
-  active.forEach((value) => value.classList.remove('active'));
+  let picture = document.querySelectorAll('.vote-section .picture');
+  picture.forEach((value) => value.classList.remove('active'));
 
+  // 增加選擇後邊框
   e.currentTarget.classList.toggle('active');
+
+  // 設定 selectedSingerId 狀態
   setSelectedSingerId(singerId);
 };
 

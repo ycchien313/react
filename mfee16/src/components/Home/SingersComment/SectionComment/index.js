@@ -10,22 +10,22 @@ function SectionComment(prop) {
 
       <div className="comment-card-row-container">
         {/* 左箭頭 */}
-        <div className="arrow-left-container">
+        {/* <div className="arrow-left-container">
           <i className="fas fa-caret-left"></i>
-        </div>
+        </div> */}
 
         {/* 評論列 */}
         <CommentRow currentSingerId={currentSingerId} />
 
         {/* 右箭頭 */}
-        <div className="arrow-right-container">
+        {/* <div className="arrow-right-container">
           <i
             className="fas fa-caret-right"
             onClick={() => {
               console.log(window.scrollX);
             }}
           ></i>
-        </div>
+        </div> */}
       </div>
 
       <a href={'url'} className="comment-link guide-button orange">

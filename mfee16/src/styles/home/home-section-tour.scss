@@ -55,10 +55,10 @@
       justify-content: center;
     }
   }
-  .features-container li[class='action'] {
+  .features-container li[class='active'] {
     opacity: 1;
   }
-  .features-container li:not([class='action']) {
+  .features-container li:not([class='active']) {
     cursor: pointer;
 
     &:hover {

@@ -41,14 +41,11 @@ function SectionVote() {
     { singerId: '', pictureUrl: '', name: '', votes: '' },
   ]);
 
-  // componentDidMount
+  // componentDidUpdate
   useEffect(() => {
     fetchData(setSingers);
     setVoted(false);
   }, [voted]);
-
-  // componentDidUpdate
-  // useEffect(() => {}, []);
 
   return (
     <>
@@ -56,7 +53,7 @@ function SectionVote() {
       <Table singers={singers} setVoted={setVoted} />
 
       {/* 誰來表演 手機版 */}
-      <Mobile />
+      <Mobile singers={singers} setVoted={setVoted} />
     </>
   );
 }

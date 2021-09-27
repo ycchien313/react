@@ -22,7 +22,7 @@ function FeaturesRow(prop) {
             return (
               <li
                 key={v4()}
-                className={featureName === name ? 'action' : ''}
+                className={featureName === name ? 'active' : ''}
                 onClick={() => {
                   setFeatureName(name);
                 }}

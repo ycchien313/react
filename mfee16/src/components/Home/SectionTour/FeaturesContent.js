@@ -82,9 +82,9 @@ const explanation = {
       </a>
       <h4 className="explanation">在線上即時看精彩的音樂表演</h4>
       <p className="sub-explanation">
-        表演者：楊丞琳
+        表演者：maroon5
         <br />
-        演出時間：08/26 20:00
+        演出時間：09/30 18:00
       </p>
     </>
   ),
