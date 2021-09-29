@@ -1,0 +1,404 @@
+/********* 線上訂位 section **********/
+.reservation-section {
+  @import '../common/style.scss';
+
+  height: 937px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+
+  /* 訂位列 */
+  .reservation-row {
+    padding: 0 30px;
+    flex-grow: 0.5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  /* 訂位步驟列 */
+  .steps-row {
+    display: flex;
+  }
+  /* 訂位步驟 */
+  .steps-row .step-container {
+    width: 200px;
+    height: 80px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  @media screen and (max-width: 1300px) {
+    .steps-row .step-container {
+      width: 15.39vw;
+    }
+  }
+  /* 訂位步驟(背景) */
+  .step-container.bg-setting {
+    background-image: url($domain + '/images/home/home-reservation-step-bg.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  /* 訂位步驟之音階 */
+  .step-container .scale-container {
+    width: 60px;
+    transform: translateY(-15px);
+  }
+  @media screen and (max-width: 1300px) {
+    .step-container .scale-container {
+      width: 4.62vw;
+    }
+  }
+  /* 訂位步驟之音階標題 */
+  .step-container .figcaption {
+    color: $secondary-green-dark;
+    font-family: $zh-tw-maru;
+  }
+  @media screen and (max-width: 1300px) {
+    .step-container .figcaption {
+      font-size: 1.2rem;
+    }
+  }
+  /* 訂位步驟之音階標題(灰色) */
+  .step-container .figcaption.gray {
+    color: #d9d9d9;
+  }
+  /* 訂位步驟之箭頭 */
+  .steps-row .arrow-container {
+    width: 250px;
+    margin: 0 10px;
+  }
+  @media screen and (max-width: 1300px) {
+    .steps-row .arrow-container {
+      width: 19.23vw;
+    }
+  }
+  /* 訂位之座位圖形列 */
+  .seats-graph-row {
+    width: 100%;
+    height: 60px;
+    background-color: #ccc;
+    border-radius: 40px;
+    box-shadow: 0px 0px 10px 2px #bbb;
+    overflow: hidden;
+    display: flex;
+  }
+  /* 訂位之座位圖形 */
+  .seat-graph {
+    height: 100%;
+    position: relative;
+  }
+  /* 訂位之座位圖形之波浪 */
+  .seat-graph::before {
+    content: '';
+    width: 120px;
+    height: 120px;
+    border-radius: 35%;
+    position: absolute;
+    top: -50%;
+    right: -15px;
+    z-index: 1;
+    animation-name: seat-graph-animation;
+    animation-duration: 9s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+  .seat-graph.orange {
+    width: 20%;
+    border-radius: 40px 0 0 40px;
+    background-color: $accent-orange;
+  }
+  .seat-graph.orange::before {
+    background-color: $accent-orange;
+  }
+  .seat-graph.green {
+    width: 35%;
+    border-radius: 0 40px 40px 0;
+    background-color: $secondary-green;
+  }
+  .seat-graph.green::before {
+    background-color: $secondary-green;
+  }
+  .seat-graph.yellow {
+    width: 35%;
+    background-color: $secondary-lightyellow;
+  }
+  .seat-graph.yellow::before {
+    background-color: $secondary-lightyellow;
+  }
+  /* 訂位之座位文字列 */
+  .seats-text-row {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+  }
+  .seats-text-row .seats-left {
+    color: $primary-lightbrown;
+    flex-grow: 0.05;
+    font-family: $zh-tw-noto;
+    font-weight: 600;
+  }
+  .seats-text-row .seats-front,
+  .seats-text-row .seats-middle,
+  .seats-text-row .seats-back {
+    flex-grow: 0.07;
+    color: $primary-lightbrown;
+    font-family: $zh-tw-noto;
+    display: flex;
+  }
+  .seats-text-row .circle {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .seats-front .circle {
+    background-color: $accent-orange;
+  }
+  .seats-middle .circle {
+    background-color: $secondary-green;
+  }
+  .seats-back .circle {
+    background-color: $secondary-lightyellow;
+  }
+  .seats-text-row .seats-count {
+    color: $accent-red;
+    font-weight: 600;
+  }
+  /* 訂位之歌手行事曆列 */
+  .singer-calendar-row {
+    width: 1160px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  @media screen and (max-width: 1300px) {
+    .singer-calendar-row {
+      width: 87.69vw;
+    }
+  }
+  .singer-calendar-row .singer-calendar {
+    flex-grow: 1;
+    padding: 10px 30px;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  @media screen and (max-width: 1300px) {
+    .singer-calendar-row .singer-calendar {
+      padding: 10px 2.3vw;
+    }
+  }
+  .singer-calendar:first-child,
+  .singer-calendar:nth-child(6) {
+    padding-left: 0;
+  }
+  .singer-calendar:nth-child(5),
+  .singer-calendar:nth-child(10),
+  .singer-calendar:last-child {
+    padding-right: 0;
+  }
+
+  /* 歌手照片上方日期 */
+  .singer-calendar .day {
+    margin-bottom: 5px;
+    color: $primary-lightbrown;
+    font-family: $zh-tw-noto;
+    font-weight: 400;
+  }
+
+  /* 歌手圓形照片 */
+  .singer-calendar .picture {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+
+    &.active {
+      border: 0.6vw solid $accent-red;
+    }
+
+    @media screen and (max-width: 1300px) {
+      width: 12.3vw;
+      height: 12.3vw;
+    }
+  }
+
+  /* 下一步按鈕 */
+  .btn-container .next-btn {
+    cursor: pointer;
+  }
+}
+
+/********* 手機版 線上訂位 section **********/
+.reservation-section-md {
+  @import '../common/style.scss';
+
+  display: none;
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    .sub-title {
+      color: $primary-lightbrown;
+      font-family: $zh-tw-noto;
+    }
+    .reservation-row {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+    .steps-row {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+    /* 訂位步驟 */
+    .steps-row .step-container {
+      width: calc(100% / 3);
+      /* height: 80px; */
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    /* 訂位步驟(背景) */
+    .step-container.bg-setting {
+      background-image: url($domain + '/images/home/home-reservation-step-bg.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    /* 訂位步驟之音階 */
+    .step-container .scale-container {
+      width: 30px;
+      transform: translateY(-10px);
+    }
+    /* 訂位步驟之音階標題 */
+    .step-container .figcaption {
+      color: $secondary-green-dark;
+      font-family: $zh-tw-maru;
+    }
+    /* 訂位步驟之音階標題(灰色) */
+    .step-container .figcaption.gray {
+      color: #d9d9d9;
+    }
+    /* 訂位步驟之箭頭 */
+    .steps-row .arrow {
+      margin: 0 10px;
+      color: #d9d9d9;
+    }
+    /* 線上訂位之本周、下周列 */
+    .weeks-row {
+      width: 80%;
+      height: 32px;
+      line-height: 32px;
+      border: 1px solid $accent-orange;
+      border-radius: 32px;
+      font-family: $zh-tw-noto;
+      text-align: center;
+      display: flex;
+      justify-content: space-evenly;
+      cursor: pointer;
+    }
+    .weeks-row .this-week {
+      width: 100%;
+      background-color: #fff;
+      border-radius: 32px 0 0 32px;
+      box-shadow: 0 3px 6px rgba(50, 50, 50, 0.5);
+      color: $accent-orange;
+    }
+    .weeks-row .next-week {
+      width: 100%;
+      background-color: #fff;
+      border-radius: 0 32px 32px 0;
+      box-shadow: 0 3px 6px rgba(50, 50, 50, 0.5);
+      color: $accent-orange;
+    }
+    .this-week.active,
+    .next-week.active {
+      background-color: $accent-orange;
+      box-shadow: unset;
+      color: #fff;
+      cursor: default;
+    }
+    /* 線上訂位之歌手行事曆 */
+    .singer-calendars-row {
+      width: 100%;
+      flex-grow: 0.8;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+    }
+    .singer-calendar {
+      width: 100%;
+      height: 40px;
+      border: 1px solid $secondary-green;
+      box-shadow: 0 3px 6px rgba(50, 50, 50, 0.5);
+      font-family: $zh-tw-noto;
+      font-weight: 100;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      position: relative;
+
+      &:not(.active) {
+        cursor: pointer;
+      }
+    }
+    .singer-calendar::before {
+      content: '';
+    }
+    .singer-calendar.active {
+      background-color: $secondary-green;
+      box-shadow: unset;
+    }
+    .singer-calendar.active .name,
+    .singer-calendar.active .date {
+      color: #fff;
+    }
+    .singer-calendar .picture {
+      width: 60px;
+      height: 60px;
+      padding: 3px;
+      background-color: #fff;
+      border-radius: 50%;
+      border: 1px solid $secondary-green;
+      object-fit: cover;
+      position: absolute;
+      left: -20px;
+    }
+    .singer-calendar .name {
+      color: $primary-lightbrown;
+    }
+    .singer-calendar .date {
+      color: $accent-orange;
+    }
+    .btn-row {
+      display: block;
+    }
+    .btn-row .next-step-btn {
+      height: 40px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+    .btn-row .next-step-btn i {
+      font-size: 2rem;
+    }
+  }
+}
