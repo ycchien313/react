@@ -1,0 +1,298 @@
+$host: 'http://localhost:3000';
+$primary-blue: #38b5ed;
+$primary-gray: #e6e9ec;
+$text-gra: #b1b1b1;
+$box-shadow: 0 2px 10px rgba(0, 0, 0, 30%);
+$h1-font-size: 2rem;
+$h3-font-size: 1.5rem;
+$min-font-size: 1.25rem;
+$row-account-type-height: 550px;
+$row-account-input-height: 180px;
+$row-account-login-height: calc(
+  100vh - $row-account-type-height - $row-account-input-height
+);
+
+@media screen and (max-width: 600px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+.container {
+  background-color: rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+
+  @media only screen and (max-width: 1024px) and (min-height: 1366px) {
+    padding: 200px 0;
+  }
+  @media screen and (max-width: 1000px) {
+    padding: 100px 0;
+  }
+  @media screen and (max-width: 768px) {
+    height: 100vh;
+    padding: unset;
+  }
+
+  a {
+    color: $primary-blue;
+    text-decoration: none;
+  }
+
+  figure {
+    margin: 0;
+  }
+
+  .page {
+    width: clamp(620px, 62.5vw, 62.5vw);
+    min-height: 100vh;
+    background-color: #fff;
+    box-sizing: border-box;
+    box-shadow: $box-shadow;
+    font-family: Calibri;
+    padding: 0
+      clamp(30px, calc((62.5vw - 560px) / 2), calc((62.5vw - 560px) / 2));
+    position: relative;
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    @media only screen and (max-width: 1024px) and (min-height: 1366px) {
+      min-height: calc(100vh - 400px);
+    }
+    @media screen and (max-width: 1000px) {
+      min-height: calc(100vh - 200px);
+    }
+    @media screen and (max-width: 768px) {
+      width: 100%;
+      height: 100%;
+      padding: 50px 30px;
+    }
+
+    // 頁面底下背景圖
+    &::after {
+      content: '';
+      width: 100%;
+      height: 100%;
+      background-image: url($host + '/assets/img_town_370x170@3x.svg');
+      background-position: bottom;
+      background-repeat: no-repeat;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      z-index: -1;
+    }
+
+    /********** 帳戶類型列 **********/
+    .row-account-type {
+      width: 100%;
+      height: $row-account-type-height;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+
+      @media screen and (max-width: 1000px) {
+        /* height: 550 - container.padding-top */
+        height: calc($row-account-type-height) - 100px;
+      }
+      @media screen and (max-width: 600px) {
+        height: 75vw;
+      }
+
+      /* 標題 */
+      .row-title .title {
+        color: #38b5ed;
+        font-weight: 500;
+        font-size: $h1-font-size;
+        margin: 0;
+        text-align: center;
+      }
+      /* 帳戶類型 */
+      .row-type {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      /* 帳戶類型方框 */
+      .row-type .box-container {
+        width: 240px;
+        height: 240px;
+        border: 4px solid #eaedf1;
+        border-radius: 5%;
+        position: relative;
+        text-align: center;
+
+        @media screen and (max-width: 600px) {
+          width: 35vw;
+          height: 35vw;
+        }
+
+        // 沒選圖片
+        &:not(.active) {
+          cursor: pointer;
+        }
+        // 有選圖片
+        &.active {
+          border: 4px solid #c3ebfd;
+        }
+        // 有選圖片 → 顯示勾選符
+        &.active .check-box {
+          display: block;
+        }
+
+        // 帳戶類型圖片
+        img {
+          width: 75%;
+          margin-top: 10px;
+          object-fit: cover;
+        }
+        // 帳戶類型圖片說明文字
+        figcaption {
+          color: #1b2437;
+          font-size: $min-font-size;
+        }
+
+        /* 勾選符號 */
+        .check-box {
+          display: none;
+          width: 50px;
+          height: 50px;
+          line-height: 50px;
+          background-color: #38b5ed;
+          border-radius: 50%;
+          box-shadow: 0 3px 10px $primary-blue;
+          color: #fff;
+          font-size: $h1-font-size;
+          position: absolute;
+          right: -25px;
+          bottom: -25px;
+
+          @media screen and (max-width: 600px) {
+            width: 8vw;
+            height: 8vw;
+            line-height: 8vw;
+            font-size: 5vw;
+            right: -4vw;
+            bottom: -4vw;
+          }
+        }
+      }
+
+      /* 子標題 */
+      .row-subtitle h3 {
+        color: #b1b1b1;
+        font-weight: 400;
+        line-height: 26px;
+        margin: 0;
+        text-align: center;
+      }
+    }
+
+    /********** 帳號密碼列 **********/
+    .row-account-input {
+      width: 100%;
+      min-height: $row-account-input-height;
+      font-size: $h3-font-size;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      @media screen and (max-width: 600px) {
+        justify-content: space-evenly;
+      }
+
+      // 帳號密碼圖示
+      i {
+        color: #d9dae4;
+        margin: 0 20px;
+      }
+      input {
+        width: 100%;
+        height: 68px;
+        border: none;
+        outline: none;
+
+        @media screen and (max-width: 600px) {
+          height: 50px;
+        }
+      }
+
+      .row-email,
+      .row-password {
+        border: 4px solid #e6e9ec;
+        border-radius: 10px;
+        position: relative;
+        transition: 0.2s;
+        display: flex;
+        align-items: center;
+      }
+      .row-email .title,
+      .row-password .title {
+        opacity: 0;
+        background-color: #38b5ed;
+        border-radius: 4px;
+        color: #fff;
+        font-size: $min-font-size;
+        padding: 4px 8px;
+        transition: 0.2s;
+        position: absolute;
+        top: -14px;
+        left: 20px;
+      }
+      // input focus狀況，改變 border
+      .row-email:focus-within,
+      .row-password:focus-within {
+        border: 4px solid #38b5ed;
+      }
+      // input focus狀況，顯示 title
+      .row-email:focus-within .title,
+      .row-password:focus-within .title {
+        opacity: 1;
+      }
+
+      // forgot 連結
+      .row-password .forgot-link {
+        border-left: 4px solid #e6e9ec;
+        padding: 0 20px;
+      }
+    }
+
+    /********** 登入按鈕列 **********/
+    .row-account-login {
+      height: $row-account-login-height;
+      color: #b1b1b1;
+      font-size: $h3-font-size;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      @media only screen and (max-width: 1024px) and (min-height: 1366px) {
+        height: 200px;
+      }
+      @media screen and (max-width: 1000px) {
+        /* height: row-account-login-height - container.padding-bottom */
+        height: calc($row-account-login-height - 100px);
+      }
+      @media screen and (max-width: 600px) {
+        height: 23vw;
+      }
+
+      // login 按鈕
+      .btn-login {
+        background-color: $primary-blue;
+        border: none;
+        border-radius: 8px;
+        box-shadow: $box-shadow;
+        color: #fff;
+        cursor: pointer;
+        padding: 15px 55px;
+        transition: 0.1s;
+
+        &:active {
+          box-shadow: none;
+        }
+      }
+    }
+  }
+}
