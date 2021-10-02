@@ -1,71 +1,83 @@
+import { useState } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import RowAccountType from './components/RowAccountType/';
+import RowAccountInput from './components/RowAccountInput/';
+import RowAccountLogin from './components/RowAccountLogin/';
 import './styles/normalize.scss';
 import './styles/style.scss';
 
+const accountTypeData = [
+  {
+    id: 1,
+    src: `${process.env.PUBLIC_URL}/assets/img_doctor_90@3x.svg`,
+    name: 'Doctor',
+  },
+  {
+    id: 2,
+    src: `${process.env.PUBLIC_URL}/assets/img_patient_90@3x.svg`,
+    name: 'Patient',
+  },
+  {
+    id: 3,
+    src: `${process.env.PUBLIC_URL}/assets/img_patient_90@3x.svg`,
+    name: 'Patient',
+  },
+  {
+    id: 4,
+    src: `${process.env.PUBLIC_URL}/assets/img_patient_90@3x.svg`,
+    name: 'Patient',
+  },
+  // {
+  //   id: 5,
+  //   src: `${process.env.PUBLIC_URL}/assets/img_patient_90@3x.svg`,
+  //   name: 'Patient',
+  // },
+  // {
+  //   id: 6,
+  //   src: `${process.env.PUBLIC_URL}/assets/img_patient_90@3x.svg`,
+  //   name: 'Patient',
+  // },
+];
+
 function App() {
+  const [currentAccountTypeIndex, setCurrentAccountTypeIndex] = useState(0);
+  // ↓ id 暫不需要
+  // const [currentAccountTypeId, setCurrentAccountTypeId] = useState(null);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [loginMsg, setLoginMsg] = useState(null);
+
   return (
     <main className="container">
-      <div className="page">
-        {/* 帳戶類型列 */}
-        <div className="row-account-type">
-          <div className="row-title">
-            <h1 className="title">Choose Account Type</h1>
-          </div>
-          <div className="row-type">
-            <figure className="box-container active">
-              <img
-                src={`${process.env.PUBLIC_URL}/assets/img_doctor_90@3x.svg`}
-                alt=""
-              />
-              <figcaption>Doctor</figcaption>
-              <div className="check-box">
-                <i className="fal fa-check"></i>
-              </div>
-            </figure>
-            <figure className="box-container">
-              <img
-                src={`${process.env.PUBLIC_URL}/assets/img_patient_90@3x.svg`}
-                alt=""
-              />
-              <figcaption>Patient</figcaption>
-              <div className="check-box">
-                <i className="fal fa-check"></i>
-              </div>
-            </figure>
-          </div>
-          <div className="row-subtitle">
-            <h3>Hello doctor!</h3>
-            <h3>Please fill out the form below to get started</h3>
-          </div>
-        </div>
+      <Router>
+        <div className="page">
+          {/* 帳戶類型列 */}
+          <RowAccountType
+            accountTypeData={accountTypeData}
+            currentAccountTypeIndex={currentAccountTypeIndex}
+            setCurrentAccountTypeIndex={setCurrentAccountTypeIndex}
+            // ↓ id 暫不需要
+            // currentAccountTypeId={currentAccountTypeId}
+            // setCurrentAccountTypeId={setCurrentAccountTypeId}
+          />
 
-        {/* 帳號密碼列 */}
-        <div className="row-account-input">
-          <div className="row-email">
-            <span className="title">Email</span>
-            <i className="fal fa-envelope"></i>
-            <input type="email" value="aaa@gmail.com" placeholder="Email" />
-          </div>
-          <div className="row-password">
-            <span className="title">Password</span>
-            <i className="fal fa-lock-alt"></i>
-            <input type="password" placeholder="Password" />
-            <a className="forgot-link" href="">
-              Forgot?
-            </a>
-          </div>
-        </div>
+          {/* 帳號密碼列 */}
+          <RowAccountInput
+            username={username}
+            setUsername={setUsername}
+            password={password}
+            setPassword={setPassword}
+            loginMsg={loginMsg}
+          />
 
-        {/* 登入按鈕列 */}
-        <div className="row-account-login">
-          <div className="col-singnup">
-            <span>No account? </span>
-            <a href="">Signup</a>
-          </div>
-          <div className="col-login">
-            <button className="btn-login">Login</button>
-          </div>
+          {/* 登入按鈕列 */}
+          <RowAccountLogin
+            username={username}
+            password={password}
+            setLoginMsg={setLoginMsg}
+          />
         </div>
-      </div>
+      </Router>
     </main>
   );
 }
