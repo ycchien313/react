@@ -9,32 +9,32 @@ import './styles/style.scss';
 const accountTypeData = [
   {
     id: 1,
-    src: `${process.env.PUBLIC_URL}/assets/img_doctor_90@3x.svg`,
+    src: '/assets/img_doctor_90@3x.svg',
     name: 'Doctor',
   },
   {
     id: 2,
-    src: `${process.env.PUBLIC_URL}/assets/img_patient_90@3x.svg`,
+    src: '/assets/img_patient_90@3x.svg',
     name: 'Patient',
   },
   {
     id: 3,
-    src: `${process.env.PUBLIC_URL}/assets/img_patient_90@3x.svg`,
+    src: '/assets/img_patient_90@3x.svg',
     name: 'Patient',
   },
   {
     id: 4,
-    src: `${process.env.PUBLIC_URL}/assets/img_patient_90@3x.svg`,
+    src: '/assets/img_patient_90@3x.svg',
     name: 'Patient',
   },
   // {
   //   id: 5,
-  //   src: `${process.env.PUBLIC_URL}/assets/img_patient_90@3x.svg`,
+  //   src: '/assets/img_patient_90@3x.svg',
   //   name: 'Patient',
   // },
   // {
   //   id: 6,
-  //   src: `${process.env.PUBLIC_URL}/assets/img_patient_90@3x.svg`,
+  //   src: '/assets/img_patient_90@3x.svg',
   //   name: 'Patient',
   // },
 ];
