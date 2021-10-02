@@ -8,14 +8,14 @@
 
 ### 密碼驗證範例
 
-username: abc12345
-password: xxabc123wer
-結果：不通過
-
-username: abc12345
-password: c12345er12fda
-結果：不通過
-
-username: abc12345
-password: c124345ksfh
-結果：通過
+username: abc12345<br/>
+password: xxabc123wer<br/>
+結果：不通過<br/>
+<br/>
+username: abc12345<br/>
+password: c12345er12fda<br/>
+結果：不通過<br/>
+<br/>
+username: abc12345<br/>
+password: c124345ksfh<br/>
+結果：通過<br/>
