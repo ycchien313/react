@@ -6,18 +6,7 @@ $box-shadow: 0 2px 10px rgba(0, 0, 0, 30%);
 $h1-font-size: 2rem;
 $h3-font-size: 1.5rem;
 $min-font-size: 1.25rem;
-$row-account-type-height: 550px;
 $row-account-input-height: 200px;
-$row-account-login-height: calc(
-  100vh - $row-account-type-height - $row-account-input-height
-);
-
-// html,
-// body,
-// #root {
-//   height: 100%;
-//   min-height: 100%;
-// }
 
 @media screen and (max-width: 600px) {
   html {
@@ -96,18 +85,9 @@ $row-account-login-height: calc(
     /********** 帳戶類型列 **********/
     .row-account-type {
       width: 100%;
-      // height: $row-account-type-height;
       display: flex;
       flex-direction: column;
       justify-content: space-evenly;
-
-      @media screen and (max-width: 1000px) {
-        /* height: 550 - container.padding-top */
-        // height: calc($row-account-type-height) - 100px;
-      }
-      @media screen and (max-width: 600px) {
-        // height: 75vw;
-      }
 
       /* 標題 */
       .row-title .title {
@@ -320,23 +300,11 @@ $row-account-login-height: calc(
 
     /********** 登入按鈕列 **********/
     .row-account-login {
-      // height: $row-account-login-height;
       color: #b1b1b1;
       font-size: $h3-font-size;
       display: flex;
       align-items: center;
       justify-content: space-between;
-
-      @media only screen and (max-width: 1024px) and (min-height: 1366px) {
-        // height: 200px;
-      }
-      @media screen and (max-width: 1000px) {
-        /* height: row-account-login-height - container.padding-bottom */
-        // height: calc($row-account-login-height - 100px);
-      }
-      @media screen and (max-width: 600px) {
-        // height: 23vw;
-      }
 
       // login 按鈕
       .btn-login {
