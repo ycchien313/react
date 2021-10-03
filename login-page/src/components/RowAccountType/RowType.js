@@ -1,3 +1,9 @@
+const accountTypeClick = (setCurrentAccountTypeIndex, index) => {
+  setCurrentAccountTypeIndex(index);
+  const inputEmail = document.querySelector('.row-email input');
+  inputEmail.focus();
+};
+
 function RowType(prop) {
   const {
     accountTypeData,
@@ -18,7 +24,7 @@ function RowType(prop) {
               currentAccountTypeIndex === index ? 'active' : ''
             }`}
             onClick={() => {
-              setCurrentAccountTypeIndex(index);
+              accountTypeClick(setCurrentAccountTypeIndex, index);
             }}
           >
             <img src={value.src} alt="" />
