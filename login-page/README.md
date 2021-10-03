@@ -4,6 +4,9 @@
 
 ### PC、ipad、mobile 等 CSS 大致皆撰寫完畢
 
+### Account Type 如增加會往下遞增
+資料於 App.js 的 accountTypeData 變數
+
 ### 密碼驗證規則：密碼的任意連續 6 碼，不可以和帳號的任意連續 6 碼重複
 
 ### 密碼驗證範例
