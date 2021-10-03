@@ -122,19 +122,11 @@ $row-account-input-height: 200px;
           &:first-child:nth-last-child(n + 3) ~ .box-container {
             width: 200px;
             height: 200px;
-            margin: 20px 30px;
+            margin: 20px auto;
 
             @media screen and (max-width: 768px) {
               width: 30vw;
               height: 30vw;
-              margin: 20px 5vw;
-
-              &:nth-child(odd) {
-                margin-right: 2.5vw;
-              }
-              &:nth-child(even) {
-                margin-left: 2.5vw;
-              }
             }
           }
 
