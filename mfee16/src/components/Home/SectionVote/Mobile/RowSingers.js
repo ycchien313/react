@@ -23,7 +23,7 @@ function RowSingers(prop) {
 
         return (
           <div
-            key={v4}
+            key={v4()}
             className="singer-row"
             onClick={(e) => {
               handleSingerRowClick(e, singerId, setSelectedSingerId);
