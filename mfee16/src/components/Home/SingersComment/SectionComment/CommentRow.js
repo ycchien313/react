@@ -36,7 +36,6 @@ const fetchData = async (currentSingerId, setComments) => {
 
   // 設定 comments 狀態
   setComments(formatData());
-  console.log(formatData());
 };
 
 function CommentRow(prop) {
