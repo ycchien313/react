@@ -1,12 +1,14 @@
 import RowTitle from './RowTitle';
-import RowReservation from './RowReservation';
+import RowReservation from './RowReservation/';
 import RowBtn from './RowBtn';
 
-function Mobile() {
+function Mobile(prop) {
+  const { singerCalendar, isActive, setIsActive } = prop;
+
   return (
     <section className="reservation-section-md">
       <RowTitle />
-      <RowReservation />
+      <RowReservation singerCalendar={singerCalendar} isActive={isActive} setIsActive={setIsActive} />
       <RowBtn />
     </section>
   );

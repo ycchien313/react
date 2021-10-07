@@ -1,31 +1,43 @@
 import { useState } from 'react';
 import { v4 } from 'uuid';
 
-const singers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
 // 點選歌手照片
-const handlePictureSelect = (isActive, setIsActive, index) => {
-  let newIsActive = Array(singers.length).fill(false);
+const handlePictureSelect = (singerCalendar, isActive, setIsActive, index) => {
+  // 設定所有 isActive 為 false，即將所有圈選後的 border 拿掉
+  let newIsActive = Array(singerCalendar.length).fill(false);
+  // 將點選的 isActive 狀態改為相反(此 isActive 仍為上一次的狀態)
   newIsActive[index] = !isActive[index];
+  // 將 newIsActive 設定至 isActive 狀態
   setIsActive(newIsActive);
 };
 
-function RowSingerCalendar() {
-  // 切換 active class 狀態
-  const [isActive, setIsActive] = useState(Array(singers.length).fill(false));
+function RowSingerCalendar(prop) {
+  const { singerCalendar, isActive, setIsActive } = prop;
 
   return (
     <div className="singer-calendar-row">
-      {singers.map((value, index) => {
+      {singerCalendar.map((value, index) => {
+        const { date, singerName } = value;
+        const imgSrc = `${process.env.PUBLIC_URL}/images/common/${singerName}.jpg`;
+        const getDate = () => {
+          const dateSplit = date.split('-');
+          return `${dateSplit[1]}/${dateSplit[2]}`;
+        };
+
         return (
           <div key={v4()} className="singer-calendar">
-            <h4 className="day">09/22</h4>
+            <h4 className="day">{getDate()}</h4>
             <img
               className={`picture ${isActive[index] ? 'active' : ''}`}
-              src={process.env.PUBLIC_URL + '/images/home/home-hero-楊丞琳.jpg'}
+              src={imgSrc}
               alt=""
               onClick={() => {
-                handlePictureSelect(isActive, setIsActive, index);
+                handlePictureSelect(
+                  singerCalendar,
+                  isActive,
+                  setIsActive,
+                  index
+                );
               }}
             />
           </div>
