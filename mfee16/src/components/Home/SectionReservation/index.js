@@ -32,7 +32,7 @@ function SectionReservation() {
   const [singerCalendar, setSingerCalendar] = useState([
     { date: '', singerName: '' },
   ]);
-  // 切換 active class 狀態，十位歌手就有十個 bool
+  // 切換 active class 狀態，ex. 十位歌手就有十個 bool
   const [isActive, setIsActive] = useState(
     Array(singerCalendar.length).fill(false)
   );
@@ -44,10 +44,18 @@ function SectionReservation() {
   return (
     <>
       {/* 線上訂位 */}
-      <Table singerCalendar={singerCalendar} isActive={isActive} setIsActive={setIsActive}/>
+      <Table
+        singerCalendar={singerCalendar}
+        isActive={isActive}
+        setIsActive={setIsActive}
+      />
 
       {/* 線上訂位 手機版 */}
-      <Mobile singerCalendar={singerCalendar} isActive={isActive} setIsActive={setIsActive} />
+      <Mobile
+        singerCalendar={singerCalendar}
+        isActive={isActive}
+        setIsActive={setIsActive}
+      />
     </>
   );
 }

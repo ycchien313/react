@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { v4 } from 'uuid';
 
 // 點選歌手照片

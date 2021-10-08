@@ -15,26 +15,28 @@ const handleWeeksClick = (week, weeks, setWeeks) => {
 };
 
 function RowWeeks(prop) {
-  const { isActive, weeks, setWeeks } = prop;
+  const { weeks, setWeeks } = prop;
+  const weeksData = [
+    { className: 'this-week', activeValue: 'thisWeek', text: '本周' },
+    { className: 'next-week', activeValue: 'nextWeek', text: '下周' },
+  ];
 
   return (
     <div className="weeks-row">
-      <div
-        className={`this-week h3 ${weeks.thisWeek && 'active'}`}
-        onClick={() => {
-          handleWeeksClick('thisWeek', weeks, setWeeks);
-        }}
-      >
-        本周
-      </div>
-      <div
-        className={`next-week h3 ${weeks.nextWeek && 'active'}`}
-        onClick={() => {
-          handleWeeksClick('nextWeek', weeks, setWeeks);
-        }}
-      >
-        下周
-      </div>
+      {weeksData.map((value) => {
+        const { className, activeValue, text } = value;
+
+        return (
+          <div
+            className={`${className} h3 ${weeks[activeValue] && 'active'}`}
+            onClick={() => {
+              handleWeeksClick(activeValue, weeks, setWeeks);
+            }}
+          >
+            {text}
+          </div>
+        );
+      })}
     </div>
   );
 }
