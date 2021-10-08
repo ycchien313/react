@@ -19,8 +19,6 @@ const handleVote = (selectedSingerId, setSelectedSingerId, setVoted) => {
     postData(selectedSingerId);
     // 設定 投過票 狀態
     setVoted(true);
-    // 移除選擇後之 class 邊框
-    document.querySelector('.vote-section .active').classList.remove('active');
     // 移除選擇後之 selectedSingerId 狀態
     setSelectedSingerId(null);
   }

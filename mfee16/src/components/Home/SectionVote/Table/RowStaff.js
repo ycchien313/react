@@ -1,38 +1,28 @@
-// import { useState, useEffect, useRef } from 'react';
-
-// 點選照片
-const handlePictureClick = (e, singerId, setSelectedSingerId) => {
-  // 移除選擇後之邊框
-  let picture = document.querySelectorAll('.vote-section .picture');
-  picture.forEach((value) => value.classList.remove('active'));
-
-  // 增加選擇後邊框
-  e.currentTarget.classList.toggle('active');
-
+/* 點選照片，使其變色(圈選狀態) */
+const handlePictureClick = (
+  singerId,
+  setSelectedSingerId,
+  isActive,
+  setIsActive,
+  index
+) => {
+  // 使圈選狀態變為皆無圈選
+  let newIsActive = Array(isActive.length).fill(false);
+  // 圈選點選之照片
+  newIsActive[index] = true;
+  // 設定圈選狀態
+  setIsActive(newIsActive);
   // 設定 selectedSingerId 狀態
   setSelectedSingerId(singerId);
 };
 
 function Staff(prop) {
-  const { singers, setSelectedSingerId } = prop;
-  //   const [didMount, setDidMount] = useState(true);
+  const { singers, setSelectedSingerId, isActive, setIsActive } = prop;
   const maxVotes = singers[0].votes;
-
-  // componentDidMount
-  //   useEffect(() => {
-  //     setDidMount(false);
-  //   }, []);
-
-  // componentDidUpdate
-  //   useEffect(() => {
-  //     if (didMount === false) {
-
-  //     }
-  //   }, []);
 
   return (
     <div className="staff-container">
-      {singers.map((value) => {
+      {singers.map((value, index) => {
         const { singerId, pictureUrl, name, votes } = value;
         const marginBot = (votes * 18) / maxVotes + 'vw';
 
@@ -42,11 +32,17 @@ function Staff(prop) {
             style={{ marginBottom: marginBot }}
           >
             <img
-              className="picture"
+              className={`picture ${isActive[index] ? 'active' : ''}`}
               src={pictureUrl}
               alt=""
-              onClick={(e) => {
-                handlePictureClick(e, singerId, setSelectedSingerId);
+              onClick={() => {
+                handlePictureClick(
+                  singerId,
+                  setSelectedSingerId,
+                  isActive,
+                  setIsActive,
+                  index
+                );
               }}
             />
             <figcaption className="singer-name h4">{name}</figcaption>
