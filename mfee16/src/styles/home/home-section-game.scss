@@ -1,0 +1,64 @@
+/********* 音樂遊戲 section **********/
+.game-section {
+  @import '../common/style.scss';
+
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  .points-container {
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    &:last-child {
+      flex-direction: column-reverse;
+    }
+  }
+
+  .point {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: $primary-lightbrown;
+    opacity: 0.3;
+    animation-iteration-count: infinite;
+    animation-duration: 3s;
+
+    &:nth-child(1) {
+      animation-name: point1-animation;
+    }
+    &:nth-child(2) {
+      animation-name: point2-animation;
+    }
+    &:nth-child(3) {
+      animation-name: point3-animation;
+    }
+  }
+
+  .game-row h2 {
+    margin-bottom: 30px;
+    color: $primary-lightbrown;
+    font-family: $zh-tw-noto;
+    text-align: center;
+  }
+  .game-container {
+    width: 600px;
+    height: 350px;
+    background: linear-gradient(135deg, #fded82 10%, #fee0dc 90%);
+    border-radius: 20px;
+    box-shadow: 3px 3px 5px #333;
+    padding: 15px 10px;
+    box-sizing: border-box;
+    text-align: center;
+    cursor: pointer;
+
+    @media screen and (max-width: 768px) {
+      width: 100%;
+      height: 235px;
+    }
+  }
+}
