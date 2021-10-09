@@ -1,3 +1,5 @@
+import '../../../styles/home/home-section-game.scss';
+
 function SectionGame() {
   return (
     <section class="game-section">
