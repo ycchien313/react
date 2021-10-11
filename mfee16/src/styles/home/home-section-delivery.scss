@@ -71,7 +71,6 @@
     .dish-container {
       width: 280px;
       height: 400px;
-      background-color: $primary-lightgreen;
       border-radius: 20px;
       box-sizing: border-box;
       padding: 10px;
@@ -94,6 +93,16 @@
           width: 210px;
           height: 60%;
         }
+      }
+
+      &.color-green-dark {
+        background-color: $secondary-green;
+      }
+      &.color-lightgray {
+        background-color: $primary-lightgray;
+      }
+      &.color-lightpink {
+        background-color: $primary-lightpink;
       }
 
       .dish-picture {
