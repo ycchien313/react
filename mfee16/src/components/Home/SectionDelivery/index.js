@@ -15,10 +15,7 @@ function SectionDelivery() {
         currentCategory={currentCategory}
         setCurrentCategory={setCurrentCategory}
       />
-      <RowDishes
-        currentCategory={currentCategory}
-        setCurrentCategory={setCurrentCategory}
-      />
+      <RowDishes currentCategory={currentCategory} />
       <RowBtn />
     </section>
   );
