@@ -12,7 +12,7 @@ import '../../styles/home/home.scss';
 function Home() {
   return (
     <>
-      <Header />
+
 
       <main class="home">
         {/* 主視覺 */}
