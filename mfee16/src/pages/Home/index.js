@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Header from '../../components/Header';
 import Fooder from '../../components/Footer';
 import SectionHero from '../../components/Home/SectionHero';
@@ -8,11 +9,17 @@ import SectionGame from '../../components/Home/SectionGame';
 import SectionReservation from '../../components/Home/SectionReservation';
 import SectionDelivery from '../../components/Home/SectionDelivery';
 import '../../styles/home/home.scss';
+import React from 'react';
 
 function Home() {
+  // 購物車 狀態
+  const [cart, setCart] = useState([
+    { name: '', price: '', img: '', count: '' },
+  ]);
+
   return (
     <>
-
+      <Header item={cart} />
 
       <main class="home">
         {/* 主視覺 */}
@@ -37,7 +44,7 @@ function Home() {
         </div>
 
         {/* 外送訂餐 */}
-        <SectionDelivery />
+        <SectionDelivery cart={cart} setCart={setCart} />
       </main>
 
       <Fooder />
