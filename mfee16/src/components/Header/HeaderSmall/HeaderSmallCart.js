@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 
 function HeaderSmallCart(props) {
-  let { name, price, count, img } = props
-  let domain = 'http://localhost:3000/images/dish/'
+  let { name, price, count, img } = props;
+  let domain = 'http://localhost:3000/images/common/food/';
   let content = (
     <div className="cart-small-content">
       <figure>
@@ -16,8 +16,8 @@ function HeaderSmallCart(props) {
         </div>
       </div>
     </div>
-  )
-  return <>{content}</>
+  );
+  return <>{content}</>;
 }
 
-export default HeaderSmallCart
+export default HeaderSmallCart;

@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 
 function HeaderBigCart(props) {
-  let { name, price, count, img } = props
-  let domain = 'http://localhost:3000/images/common/'
+  let { name, price, count, img } = props;
+  let domain = 'http://localhost:3000/images/common/food/';
   let content = (
     <div className="cart-detail">
       <figure>
@@ -14,9 +14,9 @@ function HeaderBigCart(props) {
         <h4 className="cart-info-count">{count}份</h4>
       </div>
     </div>
-  )
+  );
 
-  return <>{content}</>
+  return <>{content}</>;
 }
 
-export default HeaderBigCart
+export default HeaderBigCart;
