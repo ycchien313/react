@@ -4,7 +4,8 @@ import RowDishes from './RowDishes';
 import RowBtn from './RowBtn';
 import '../../../styles/home/home-section-delivery.scss';
 
-function SectionDelivery() {
+function SectionDelivery(prop) {
+  const { cart, setCart } = prop;
   // 目前選到類別的狀態
   const [currentCategory, setCurrentCategory] = useState('主餐');
 
@@ -15,7 +16,11 @@ function SectionDelivery() {
         currentCategory={currentCategory}
         setCurrentCategory={setCurrentCategory}
       />
-      <RowDishes currentCategory={currentCategory} />
+      <RowDishes
+        currentCategory={currentCategory}
+        cart={cart}
+        setCart={setCart}
+      />
       <RowBtn />
     </section>
   );

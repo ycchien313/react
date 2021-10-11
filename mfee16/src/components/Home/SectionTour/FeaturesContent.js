@@ -84,7 +84,7 @@ const explanation = {
       <p className="sub-explanation">
         表演者：maroon5
         <br />
-        演出時間：09/30 18:00
+        演出時間：10/18 18:00
       </p>
     </>
   ),

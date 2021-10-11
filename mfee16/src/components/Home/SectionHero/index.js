@@ -32,7 +32,7 @@ function SectionHero() {
               <div class="show-time-container">
                 <h4 class="show-time-title">表演時間</h4>
                 <div class="show-time-content">
-                  <h4 class="date">09/30</h4>
+                  <h4 class="date">10/18</h4>
                   <h4 class="time">18:00</h4>
                 </div>
               </div>

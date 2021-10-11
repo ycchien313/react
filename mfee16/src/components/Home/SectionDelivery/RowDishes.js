@@ -42,7 +42,61 @@ const fetchData = async (setDishes) => {
 
   data = formatData();
 
+  // 設定 餐點資料 狀態
   setDishes(data);
+  // 設定 購物車之餐點數量 狀態
+  // setCount(Array(data.length).fill(0));
+};
+
+/* 取得 localStorage 之購物車資料 */
+const getDataFromLocalStorage = (setCart) => {
+  let cart = localStorage.getItem('cart');
+  let newCart = cart !== null ? JSON.parse(cart) : [];
+  setCart(newCart);
+};
+
+/* 加入至購物車 click */
+const handleAddToCart = (value, cart, setCart, price, imageRealistic) => {
+  let newCart = [...cart];
+
+  // 加入商品至購物車
+  if (newCart.length === 0) {
+    newCart.push({
+      name: value.name,
+      price: price,
+      img: imageRealistic,
+      count: 1,
+    });
+  } else {
+    // 加入商品至購物車
+    newCart.some((item, i) => {
+      const { count, name } = item;
+
+      if (name === value.name) {
+        newCart[i] = {
+          name: name,
+          price: price,
+          img: imageRealistic,
+          count: count + 1,
+        };
+        return true;
+      } else if (i === newCart.length - 1) {
+        newCart.push({
+          name: value.name,
+          price: price,
+          img: imageRealistic,
+          count: 1,
+        });
+        return true;
+      }
+    });
+  }
+
+  // 設定 購物車 狀態
+  setCart(newCart);
+
+  // 設定 localStorage
+  localStorage.setItem('cart', JSON.stringify(newCart));
 };
 
 // dish-container 之 顏色 class
@@ -53,7 +107,7 @@ const dishContainerClassName = {
 };
 
 function RowDishes(prop) {
-  const { currentCategory } = prop;
+  const { currentCategory, cart, setCart } = prop;
   // 餐點資料 狀態
   const [dishes, setDishes] = useState([
     {
@@ -67,8 +121,10 @@ function RowDishes(prop) {
     },
   ]);
 
+
   useEffect(() => {
     fetchData(setDishes);
+    getDataFromLocalStorage(setCart);
   }, []);
 
   return (
@@ -93,7 +149,18 @@ function RowDishes(prop) {
                   <h4 className="dish-price">${price}</h4>
                 </div>
                 <div className="btn-container">
-                  <button className="btn-add guide-button orange">
+                  <button
+                    className="btn-add guide-button orange"
+                    onClick={() => {
+                      handleAddToCart(
+                        value,
+                        cart,
+                        setCart,
+                        price,
+                        imageRealistic
+                      );
+                    }}
+                  >
                     加入
                     <i className="fas fa-cart-plus"></i>
                   </button>
