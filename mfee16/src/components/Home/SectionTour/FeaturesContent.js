@@ -24,7 +24,7 @@ const screen = {
   請誰來表演: (
     <>
       <img
-        src={process.env.PUBLIC_URL + '/images/home/home-tour-img-vote.png'}
+        src={process.env.PUBLIC_URL + '/images/home/home-tour-img-vote3.jpg'}
         alt=""
       />
     </>
@@ -82,7 +82,7 @@ const explanation = {
       </a>
       <h4 className="explanation">在線上即時看精彩的音樂表演</h4>
       <p className="sub-explanation">
-        表演者：maroon5
+        表演者：劉德華
         <br />
         演出時間：10/18 18:00
       </p>
