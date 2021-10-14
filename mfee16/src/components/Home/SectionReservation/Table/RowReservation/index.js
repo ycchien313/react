@@ -4,13 +4,13 @@ import RowSeatsText from './RowSeatsText';
 import RowSingerCalendar from './RowSingerCalendar';
 
 function RowReservation(prop) {
-  const { singerCalendar, isActive, setIsActive } = prop;
+  const { singerCalendar, isActive, setIsActive, seats } = prop;
 
   return (
     <div className="reservation-row">
       <RowSteps />
-      <RowSeatsGraph />
-      <RowSeatsText />
+      <RowSeatsGraph seats={seats} />
+      <RowSeatsText seats={seats} />
       <RowSingerCalendar
         singerCalendar={singerCalendar}
         isActive={isActive}
