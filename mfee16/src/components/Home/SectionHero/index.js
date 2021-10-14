@@ -23,12 +23,12 @@ function SectionHero() {
           <div class="content-container">
             <figure class="singer-avatar-container">
               <img
-                src={process.env.PUBLIC_URL + '/images/common/maroon5.jpg'}
+                src={process.env.PUBLIC_URL + '/images/common/劉德華.jpg'}
                 alt=""
               />
             </figure>
             <div class="singer-info">
-              <h3 class="singer-name">maroon5</h3>
+              <h3 class="singer-name">劉德華</h3>
               <div class="show-time-container">
                 <h4 class="show-time-title">表演時間</h4>
                 <div class="show-time-content">

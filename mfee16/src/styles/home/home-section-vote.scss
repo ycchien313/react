@@ -37,9 +37,15 @@
 
     .picture {
       border-radius: 50%;
+      box-sizing: border-box;
+      box-shadow: $box-shadow;
       object-fit: cover;
       cursor: pointer;
-      transition: 0.1s;
+      transition: 0.3s;
+
+      &:hover {
+        border: 0.6vw solid lighten($accent-red, 10%);
+      }
 
       &.active {
         border: 0.6vw solid $accent-red;
