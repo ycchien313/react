@@ -93,6 +93,7 @@
   /* 訂位之座位圖形 */
   .seat-graph {
     height: 100%;
+    transition: 0.3s;
     position: relative;
   }
   /* 訂位之座位圖形之波浪 */
@@ -218,11 +219,16 @@
   .singer-calendar .picture {
     width: 160px;
     height: 160px;
-    border: 0.6vw solid rgba(255, 255, 255, 0);
     border-radius: 50%;
+    box-sizing: border-box;
+    box-shadow: $box-shadow;
     object-fit: cover;
+    transition: 0.3s;
     cursor: pointer;
 
+    &:hover {
+      border: 0.6vw solid lighten($accent-red, 10%);
+    }
     &.active {
       border: 0.6vw solid $accent-red;
     }
