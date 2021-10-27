@@ -1,0 +1,1 @@
+{"version":3,"file":"./index.css","mappings":"AAAA,oBACE,WAEA,yCACE,W","sources":["webpack://react-env-practice/./src/index.scss"],"sourcesContent":[".main {\r\n  color: #aaf;\r\n\r\n  .point {\r\n    color: #faf;\r\n  }\r\n}\r\n"],"names":[],"sourceRoot":""}

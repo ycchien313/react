@@ -1,0 +1,47 @@
+{
+  "name": "react-env-practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "//build": "打包 entry 指定的檔案成同一份",
+    "build": "webpack --mode production",
+    "//eslintInit": "初始化 eslint，建立設定檔",
+    "eslintInit": "eslint --init",
+    "//lint": "執行 eslint，做語法檢查",
+    "lint": "eslint src/*.js",
+    "//build-css": "編譯 sass 檔，並建立 css 檔，且會額外建立 map 檔(方便瀏覽器查找 sass 檔用)",
+    "build-css": "sass src/index.scss src/index.css",
+    "//dev": "執行 webpack-dev-server",
+    "dev": "webpack serve --mode development"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-react": "^7.14.5",
+    "babel-loader": "^8.2.3",
+    "css-loader": "^6.4.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "mini-css-extract-plugin": "^2.4.2",
+    "sass-loader": "^12.2.0",
+    "style-loader": "^3.3.0",
+    "webpack": "^5.58.2",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.3.1"
+  },
+  "dependencies": {
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "sass": "^1.43.2"
+  }
+}
