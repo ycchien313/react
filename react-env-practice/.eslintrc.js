@@ -5,9 +5,7 @@ module.exports = {
   },
   extends: ['plugin:react/recommended', 'airbnb'],
   parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
+    ecmaFeatures: { jsx: true },
     // 13版被認為有問題，降至12版
     ecmaVersion: 12,
     sourceType: 'module',
@@ -18,6 +16,8 @@ module.exports = {
     semi: ['off'],
     // 限制每行僅一個jsx元素：關閉
     'react/jsx-one-expression-per-line': 'off',
+    // 允許多行
+    'object-curly-newline': ['error', { multiline: true }],
   },
 };
 
