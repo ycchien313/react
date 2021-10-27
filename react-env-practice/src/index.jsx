@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createContext, useContext } from 'react';
 import ReactDom from 'react-dom';
 import PropTypes from 'prop-types';
 import position from './position';
@@ -7,6 +7,37 @@ import position from './position';
 import styles from './index.scss';
 // import SayHello from './components/SayHello';
 // import Counter from './components/Counter';
+
+const TodoListContext = createContext();
+
+const Counter = () => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    console.log('componentDidMount', 'render 後執行');
+
+    return () => {
+      console.log('component 移除後');
+    };
+  }, []);
+
+  useEffect(() => {
+    console.log(`state 改變後 ${count}`);
+
+    return () => {
+      console.log(`state 改變前 ${count}`);
+    };
+  }, [count]);
+
+  return (
+    <>
+      <button type="button" onClick={() => setCount(count + 1)}>
+        ++
+      </button>
+      <h1>{count}</h1>
+    </>
+  );
+};
 
 const OtherComponent = () => (
   <>
@@ -54,38 +85,40 @@ SayHello.defaultProps = {
   children: <h1>無 component</h1>,
 };
 
-const Counter = () => {
-  const [count, setCount] = useState(0);
+const Task = (props) => {
+  const { task } = props;
+  return <div>{task}</div>;
+};
 
-  useEffect(() => {
-    console.log('componentDidMount', 'render 後執行');
+Task.propTypes = { task: PropTypes.string };
+Task.defaultProps = { task: '' };
 
-    return () => {
-      console.log('component 移除後');
-    };
-  }, []);
+const TodoList = () => {
+  const todoList = useContext(TodoListContext);
 
-  useEffect(() => {
-    console.log(`state 改變後 ${count}`);
+  return todoList.map((task) => (
+    <ul key={task}>
+      <Task task={task} />
+    </ul>
+  ));
+};
 
-    return () => {
-      console.log(`state 改變前 ${count}`);
-    };
-  }, [count]);
+const TodoListPage = () => (
+  <div>
+    <div>其他內容之類</div>
+    <TodoList />
+  </div>
+);
 
-  return (
-    <>
-      <button type="button" onClick={() => setCount(count + 1)}>
-        ++
-      </button>
-      <h1>{count}</h1>
-    </>
-  );
+const CurrentTask = () => {
+  const todoList = useContext(TodoListContext);
+  return <div>{`下一件事要做：${todoList[0]}`}</div>;
 };
 
 const Main = () => {
   const names = ['Kevin', 'Vincent', 'Jay', 'Five', ''];
   const [hiddenCounter, setHiddenCounter] = useState(false);
+  const [todoList] = useState(['first', 'second']);
 
   return (
     <>
@@ -102,6 +135,7 @@ const Main = () => {
       <h1 className={styles.main}>Hi JSXAAA！</h1>
       <h1>directory in: {position}</h1>
 
+      {/* 使用 prop-types，names 在 component 內 render */}
       <SayHello names={names}>
         <OtherComponent />
       </SayHello>
@@ -111,6 +145,15 @@ const Main = () => {
       {/* {names.map((name) => (
         <SayHello key={name} name={name} />
       ))} */}
+
+      {/* 使用 useContext，不需要再一層一層傳下去 */}
+      <TodoListContext.Provider value={todoList}>
+        <span>代辦事項數： {todoList.length}</span>
+        <TodoList />
+
+        <TodoListPage />
+        <CurrentTask />
+      </TodoListContext.Provider>
     </>
   );
 };
