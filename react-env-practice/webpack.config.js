@@ -50,9 +50,7 @@ module.exports = {
         // scss 編譯用
         test: /\.scss$/,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-          },
+          { loader: MiniCssExtractPlugin.loader },
           {
             // 先處理 css 編譯
             loader: 'css-loader',
@@ -64,9 +62,7 @@ module.exports = {
           {
             // 在處理 scss 編譯
             loader: 'sass-loader',
-            options: {
-              sourceMap: true,
-            },
+            options: { sourceMap: true },
           },
         ],
       },
