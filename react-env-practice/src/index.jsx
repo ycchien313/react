@@ -122,6 +122,10 @@ const Main = () => {
 
   return (
     <>
+      <h1 className={styles.main}>Hi JSXAAA！</h1>
+      <h1>directory in: {position}</h1>
+
+      {/* life cycle */}
       <button
         type="button"
         onClick={() => {
@@ -131,9 +135,6 @@ const Main = () => {
         開啟、關閉計數器
       </button>
       {hiddenCounter ? null : <Counter />}
-
-      <h1 className={styles.main}>Hi JSXAAA！</h1>
-      <h1>directory in: {position}</h1>
 
       {/* 使用 prop-types，names 在 component 內 render */}
       <SayHello names={names}>
