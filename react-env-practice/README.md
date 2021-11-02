@@ -4,7 +4,7 @@
 
 ### 手動安裝及設定以下環境
 
-- webpack (一次打包所有語法，整合成一個檔案，免除使用CDN)
+- webpack (一次打包所有語法，整合成一個檔案，免除使用 CDN)
 - eslint ()
 - babel (編譯 JSX 語法用)
 - react
@@ -38,3 +38,8 @@
 - css-loader
 - sass-loader
 - mini-css-extract-plugin
+
+### redux 相關套件
+
+- redux
+- react-redux
