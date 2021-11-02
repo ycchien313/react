@@ -1,14 +1,17 @@
-import React, { useState, useEffect, createContext, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
+// import React, { useState, useEffect, createContext, useContext } from 'react';
 import ReactDom from 'react-dom';
 import PropTypes from 'prop-types';
+// useSelector 允許直接取得 redux store 中的狀態
+import { Provider, useSelector } from 'react-redux';
 import position from './position';
+import store from './store';
 // 編譯後，class name 會依照 webpack 的設定來命名，因此需要另外宣告一個變數(styles)使用
-// import styles from './index.css';
 import styles from './index.scss';
 // import SayHello from './components/SayHello';
 // import Counter from './components/Counter';
 
-const TodoListContext = createContext();
+// const TodoListContext = createContext();
 
 const Counter = () => {
   const [count, setCount] = useState(0);
@@ -94,7 +97,10 @@ Task.propTypes = { task: PropTypes.string };
 Task.defaultProps = { task: '' };
 
 const TodoList = () => {
-  const todoList = useContext(TodoListContext);
+  // const todoList = useContext(TodoListContext);
+
+  // react-redux 增加的 hooks，功能像 useContext
+  const todoList = useSelector((state) => state.todoList);
 
   return todoList.map((task) => (
     <ul key={task}>
@@ -111,14 +117,19 @@ const TodoListPage = () => (
 );
 
 const CurrentTask = () => {
-  const todoList = useContext(TodoListContext);
+  // const todoList = useContext(TodoListContext);
+  const todoList = useSelector((state) => state.todoList);
+
   return <div>{`下一件事要做：${todoList[0]}`}</div>;
 };
 
 const Main = () => {
   const names = ['Kevin', 'Vincent', 'Jay', 'Five', ''];
   const [hiddenCounter, setHiddenCounter] = useState(false);
-  const [todoList] = useState(['first', 'second']);
+
+  // const [todoList] = useState(['first', 'second']);
+  // useContext 須設定初始狀態於最外層，redux 則將初始狀態移到 reducer
+  const todoList = useSelector((state) => state.todoList);
 
   return (
     <>
@@ -148,15 +159,28 @@ const Main = () => {
       ))} */}
 
       {/* 使用 useContext，不需要再一層一層傳下去 */}
-      <TodoListContext.Provider value={todoList}>
+      {/* <TodoListContext.Provider value={todoList}>
         <span>代辦事項數： {todoList.length}</span>
         <TodoList />
 
         <TodoListPage />
         <CurrentTask />
-      </TodoListContext.Provider>
+      </TodoListContext.Provider> */}
+
+      {/* 使用 redux，原本初始狀態 todoList 已經移到 reducer/todoList.js */}
+      <div>
+        <span>代辦事項數： {todoList.length}</span>
+        <TodoList />
+        <TodoListPage />
+        <CurrentTask />
+      </div>
     </>
   );
 };
 
-ReactDom.render(<Main />, document.getElementById('root'));
+ReactDom.render(
+  <Provider store={store}>
+    <Main />
+  </Provider>,
+  document.getElementById('root'),
+);
