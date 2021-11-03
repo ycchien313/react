@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react';
 import ReactDom from 'react-dom';
 import PropTypes from 'prop-types';
 // useSelector 允許直接取得 redux store 中的狀態
-import { Provider, useSelector } from 'react-redux';
+import { Provider, useSelector, useDispatch } from 'react-redux';
+import { addTodo } from './action/todolist'
 import position from './position';
 import store from './store';
 // 編譯後，class name 會依照 webpack 的設定來命名，因此需要另外宣告一個變數(styles)使用
@@ -130,6 +131,8 @@ const Main = () => {
   // const [todoList] = useState(['first', 'second']);
   // useContext 須設定初始狀態於最外層，redux 則將初始狀態移到 reducer
   const todoList = useSelector((state) => state.todoList);
+  const [newTodo, setNewTodo] = useState('')
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -170,6 +173,18 @@ const Main = () => {
       {/* 使用 redux，原本初始狀態 todoList 已經移到 reducer/todoList.js */}
       <div>
         <span>代辦事項數： {todoList.length}</span>
+        <div>
+          <input value={newTodo} onChange={(e) => { setNewTodo(e.target.value) }} />
+          <button
+            type="button"
+            onClick={() => {
+              console.log('dispatch');
+              // dispatch 請 store 執行 reducer
+              dispatch(addTodo(newTodo))
+            }}
+          >新增事項
+          </button>
+        </div>
         <TodoList />
         <TodoListPage />
         <CurrentTask />
