@@ -19,6 +19,14 @@ module.exports = {
     // 允許多行
     'object-curly-newline': ['error', { multiline: true }],
   },
+  // settings: {
+  //   'import/resolver': {
+  //     node: {
+  //       path: ['@'],
+  //       extensions: ['.js', '.jsx', '.ts', '.tsx'],
+  //     },
+  //   },
+  // },
 };
 
 // module.exports = {
