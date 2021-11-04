@@ -1,4 +1,4 @@
-# React 環境建置練習 (非 CRA)
+# React 環境建置(非CRA)、redux、hook練習
 
 ## 請先裝好 node.js 環境及 npm 工具
 
@@ -25,6 +25,8 @@
 - babel-loader
 - @babel/preset-env
 - @babel/preset-react
+- @babel/plugin-transform-runtime (async/await 用，dev，設定 .babelrc)
+- @babel/runtime (async/await 用，設定 .babelrc)
 
 ### react 相關套件
 
@@ -43,3 +45,8 @@
 
 - redux
 - react-redux
+
+### hook 練習部分
+- useGetUUID (custom hook，抓 uuid)
+- useRef (主要操作 DOM 用，但不會 rerender，useState 則會)
+- useMemo (優化效能用)
