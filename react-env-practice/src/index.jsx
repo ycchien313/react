@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 // import React, { useState, useEffect, createContext, useContext } from 'react';
 import ReactDom from 'react-dom';
 import PropTypes from 'prop-types';
@@ -11,9 +11,11 @@ import store from './store';
 import styles from './index.scss';
 // import SayHello from './components/SayHello';
 // import Counter from './components/Counter';
+import useGetUUID from './hooks/useGetUUID';
 
 // const TodoListContext = createContext();
 
+/* life cycle */
 const Counter = () => {
   const [count, setCount] = useState(0);
 
@@ -21,15 +23,15 @@ const Counter = () => {
     console.log('componentDidMount', 'render 後執行');
 
     return () => {
-      console.log('component 移除後');
+      console.log('componentWillUnmount', 'component 移除後');
     };
   }, []);
 
   useEffect(() => {
-    console.log(`state 改變後 ${count}`);
+    console.log('componentDidUpdate', `state 改變後 ${count}`);
 
     return () => {
-      console.log(`state 改變前 ${count}`);
+      console.log('componentDidUpdate', `state 改變前 ${count}`);
     };
   }, [count]);
 
@@ -124,15 +126,58 @@ const CurrentTask = () => {
   return <div>{`下一件事要做：${todoList[0]}`}</div>;
 };
 
+// const CounterWithUesRef = () => {
+//   /* useRef hook */
+//   const numberRef = useRef(0)
+
+//   useEffect(() => {
+//     // componentDidMount
+//     const loop = setInterval(() => {
+//       console.log(numberRef.current)
+//       numberRef.current += 1;
+//     }, 1000)
+
+//     // componentWillUnmount
+//     return () => {
+//       clearInterval(loop)
+//     }
+//   }, [])
+
+//   return (
+//     <div>
+//       <h1>使用 useRef</h1>
+//       <h1>{`${numberRef.current} useRef 不會 rerender，請看 console`}</h1>
+//     </div>
+//   )
+// }
+
+const UseRefPractice = () => {
+  const inputRef = useRef(null);
+
+  const handleClickFocusInput = () => {
+    inputRef.current.focus()
+  }
+
+  return (
+    <div>
+      <input ref={inputRef} />
+      <button type="button" onClick={handleClickFocusInput}>聚焦</button>
+    </div>
+  )
+}
+
 const Main = () => {
   const names = ['Kevin', 'Vincent', 'Jay', 'Five', ''];
   const [hiddenCounter, setHiddenCounter] = useState(false);
 
   // const [todoList] = useState(['first', 'second']);
-  // useContext 須設定初始狀態於最外層，redux 則將初始狀態移到 reducer
+  /* useContext 須設定初始狀態於最外層，redux 則將初始狀態移到 reducer */
   const todoList = useSelector((state) => state.todoList);
   const [newTodo, setNewTodo] = useState('')
   const dispatch = useDispatch();
+
+  /* custom hook */
+  const uuidString = useGetUUID()
 
   return (
     <>
@@ -189,6 +234,17 @@ const Main = () => {
         <TodoListPage />
         <CurrentTask />
       </div>
+
+      {/* 使用 custom hook */}
+      <div>
+        <h1>使用 custom hook，useGetUUID</h1>
+        <div>狀態：{uuidString ? '有值' : '無值'}</div>
+        <h2>UUID: {uuidString}</h2>
+      </div>
+
+      {/* 使用 useRef */}
+      {/* <CounterWithUesRef /> */}
+      <UseRefPractice />
     </>
   );
 };
