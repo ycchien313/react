@@ -11,6 +11,13 @@ module.exports = {
     path: path.resolve(__dirname, './dist/'), // 檔案位置
   },
 
+  // 允許 import 其他資料夾
+  resolve: {
+    // 使用 @ 代表 src 目錄起點
+    // alias: { '@': path.resolve(__dirname, 'src') },
+    extensions: ['.js', '.jsx'],
+  },
+
   // 產生 css map 用
   devtool: 'source-map',
 
