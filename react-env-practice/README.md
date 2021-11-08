@@ -49,4 +49,5 @@
 ### hook 練習部分
 - useGetUUID (custom hook，抓 uuid)
 - useRef (主要操作 DOM 用，但不會 rerender，useState 則會)
-- useMemo (優化效能用)
+- useMemo (Memorization 記憶，優化效能用，避免重複render。觸發監聽之變數後，改變memo內之程式)
+- useCallback (同 useMemo。useMemo: 為變數；useCallback: 為function)

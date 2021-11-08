@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 // import React, { useState, useEffect, createContext, useContext } from 'react';
 import ReactDom from 'react-dom';
 import PropTypes from 'prop-types';
@@ -151,6 +151,7 @@ const CurrentTask = () => {
 //   )
 // }
 
+/* 使用 useRef */
 const UseRefPractice = () => {
   const inputRef = useRef(null);
 
@@ -162,6 +163,56 @@ const UseRefPractice = () => {
     <div>
       <input ref={inputRef} />
       <button type="button" onClick={handleClickFocusInput}>聚焦</button>
+    </div>
+  )
+}
+
+/* 使用 useMemo */
+const UseMemoPractice = () => {
+  const [firstNumber, setFirstNumber] = useState(0);
+  const [secondNumber, setSecondNumber] = useState(0);
+
+  // const secondNumberPlusRandom = secondNumber + Math.random();
+  /* 使用 useMemo 監聽 secondNumber */
+  /* 當 secondNumber 改變時，執行裡面程式 */
+  const secondNumberPlusRandom = useMemo(() => secondNumber + Math.random(), [secondNumber])
+
+  return (
+    <div>
+      <h1>useMemo</h1>
+      {firstNumber}
+      <button type="button" onClick={() => { setFirstNumber(firstNumber + 1) }}>點我</button>
+      <hr />
+      {secondNumber}
+      <button type="button" onClick={() => { setSecondNumber(secondNumber + 1) }}>點我</button>
+      <hr />
+      {secondNumberPlusRandom}
+    </div>
+  )
+}
+
+/* 使用 useMemo */
+const UseCallbackPractice = () => {
+  const [firstNumber, setFirstNumber] = useState(0);
+  const [secondNumber, setSecondNumber] = useState(0);
+
+  /* 使用 useCallback 監聽 secondNumber */
+  /* 當 secondNumber 改變時，執行裡面程式 */
+  const handleClickSecondNumberPlusRandom = useCallback(
+    () => { console.log(firstNumber + secondNumber) },
+    [secondNumber],
+  )
+
+  return (
+    <div>
+      <h1>useCallback</h1>
+      {firstNumber}
+      <button type="button" onClick={() => { setFirstNumber(firstNumber + 1) }}>點我</button>
+      <hr />
+      {secondNumber}
+      <button type="button" onClick={() => { setSecondNumber(secondNumber + 1) }}>點我</button>
+      <hr />
+      <button type="button" onClick={handleClickSecondNumberPlusRandom}>點我</button>
     </div>
   )
 }
@@ -245,6 +296,12 @@ const Main = () => {
       {/* 使用 useRef */}
       {/* <CounterWithUesRef /> */}
       <UseRefPractice />
+
+      {/* 使用 useMemo */}
+      <UseMemoPractice />
+
+      {/* 使用 useCallback */}
+      <UseCallbackPractice />
     </>
   );
 };
